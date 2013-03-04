@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<!DOCTYPE classifications_file [
+   <!ELEMENT classifications_file (comments, data_set+)>
+   <!ELEMENT comments (#PCDATA)>
+   <!ELEMENT data_set (data_set_id, misc_info*, role?, classification)>
+   <!ELEMENT data_set_id (#PCDATA)>
+   <!ELEMENT misc_info (#PCDATA)>
+   <!ATTLIST misc_info info_type CDATA "">
+   <!ELEMENT role (#PCDATA)>
+   <!ELEMENT classification (section*, class*)>
+   <!ELEMENT section (start, stop, class+)>
+   <!ELEMENT class (#PCDATA)>
+   <!ELEMENT start (#PCDATA)>
+   <!ELEMENT stop (#PCDATA)>
+]>
+
+<classifications_file>
+
+   <comments>This is an example of an XML file that stores the model (or resultant) classifications as provided to (or produced) by the ACE software. The data_set element delineates what data sets (e.g. recordings) present. The data_set_id specifies the unique identifier of a data set (e.g. a file path). The misc_info element can be used as many (or no) times as required to provide accompanying meta-data regarding each data set, and allows an info_type attribute to identify the type of meta-data. The role element is used internally by ACE to store information such as whether a file is to be used for training or testing, for example, and can be omitted if desired when providing model data. The classification element allows the specification of overall classifications of individual data sets as well as individual classifications of sub-sections of data sets. The section element delineates each section of a data set. The class element provides the classification for the given section or overall data set. More than one classification per section or data set may be used for some applications. Classification categories should, in general but not exclusively, belong to leaf categories when hierarchical taxonomies are used. The start and stop elements describe where each section begins and ends.</comments>
+
+   <data_set>
+      <data_set_id>C:\Recordings\Handel_4.wav</data_set_id>
+      <misc_info info_type="Composer">Handel</misc_info>
+      <role>training</role>
+      <classification>
+         <section>
+            <start>0</start>
+			<stop>89</stop>
+			<class>Silence</class>
+		 </section>
+         <section>
+            <start>90</start>
+			<stop>194</stop>
+			<class>Music</class>
+		 </section>
+         <section>
+            <start>195</start>
+			<stop>299</stop>
+			<class>Applause</class>
+		 </section>
+	  </classification>
+   </data_set>
+	  
+   <data_set>
+      <data_set_id>C:\Recordings\Handel_5.wav</data_set_id>
+      <role>training</role>
+      <classification>
+         <section>
+            <start>0</start>
+			<stop>88</stop>
+			<class>Applause</class>
+		 </section>
+         <section>
+            <start>89</start>
+			<stop>110</stop>
+			<class>Speech</class>
+		 </section>
+         <section>
+            <start>111</start>
+			<stop>157</stop>
+			<class>Silence</class>
+		 </section>
+         <section>
+            <start>158</start>
+			<stop>280</stop>
+			<class>Music</class>
+		 </section>
+         <section>
+            <start>281</start>
+			<stop>322</stop>
+			<class>Applause</class>
+		 </section>
+	  </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>C:\Recordings\UnknownFile.wav</data_set_id>
+      <misc_info info_type="Note">This file has not been manually classified yet.</misc_info>
+	  <classification></classification>
+   </data_set>
+
+</classifications_file>

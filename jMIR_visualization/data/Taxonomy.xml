@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE taxonomy_file [
+   <!ELEMENT taxonomy_file (comments, parent_class+)>
+   <!ELEMENT comments (#PCDATA)>
+   <!ELEMENT parent_class (class_name, sub_class*)>
+   <!ELEMENT class_name (#PCDATA)>
+   <!ELEMENT sub_class (class_name, sub_class*)>
+]>
+
+<taxonomy_file>
+
+   <comments>This is an example of an XML file that stores a hierarchical taxonomy to be parsed by the ACE software. The parent_class element is used to define parents at the highest level of the tree. The sub_class element (which can be used recursively) defines child nodes. The sub_class element can simply never be used if one wishes to use a flat taxonomy. The class_name element defines the name of each class (irregardless of level in the tree).</comments>
+
+   <parent_class>
+ 		 <class_name>Music</class_name>
+   </parent_class>
+
+   <parent_class>
+		 <class_name>NotMusic</class_name>
+
+         <sub_class>
+            <class_name>NotSilence</class_name>
+         
+			 <sub_class>
+				<class_name>Applause</class_name>
+			 </sub_class>
+	 
+			 <sub_class>
+				<class_name>Speech</class_name>
+			 </sub_class>
+		 </sub_class>
+
+		 <sub_class>
+            <class_name>Silence</class_name>
+         </sub_class>
+   </parent_class>
+
+</taxonomy_file>

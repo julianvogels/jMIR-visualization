@@ -1,33 +1,31 @@
 /*
 *  jMIR-visualization application
-*  ACE XML Parser
+*  Version: 1.0
+*  Date: 2013|03|04
 *
 *  Authors:
 *  Julian Vogels (julian.vogels@mail.mcgill.ca)
 *  Benjamin Bacon (benjamin.bacon@mail.mcgill.ca)
 */
 
-import ace.xmlparsers.*;
-import ace.datatypes.*;
-import ace.*;
-import ace.gui.*;
-
-// Declaration of the DataBoard class (jMIR library)
-DataBoard[] dataBoard;
-
 void setup() {
   size(640, 360);
   
-  // Load the XML documents
-  String taxonomyXML = loadXML("Taxonomy.xml");
-  XML featureKeyXML = loadXML("FeatureKey.xml");
-  // TODO: This can be multiple files - design array structure and change DataBoard Instantiation
-  XML featureVectorsXML = loadXML("FeatureVectors.xml");
-  XML classificationXML = loadXML("Classification.xml");
-
-  // Instantiate DataBoard
-  dataBoard = new DataBoard(taxonomyXML, featureKeyXML, featureVectorsXML, classificationXML);
-  println(databoard);
+  // call the jMIR connection setup
+  jMIR_connect();
+  
+  // call the data preprocessor setup
+  jMIR_preprocessor();
+  
+  // call the graphical user interface setup
+  jMIR_GUI();
+  
+  // call the graphics setup
+  jMIR_graphics();
+    
+  // Ask user for files
+  //openFiles();
+  
 }
 
 

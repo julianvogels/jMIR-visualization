@@ -51,13 +51,13 @@ void jMIR_connect() {
   }
   }
   // Create an Array for the feature vectors. There can be multiple feature vector files
-  String[] featureVectorsXML = new String[XMLcount];
-;
+  //String[] featureVectorsXML = new String[XMLcount];
+  ArrayList<String> featureVectorsAL = new ArrayList<String>();
   // get file names and write into array
   for (int i = 0; i < filenames.length; i++) {
-  println("File name: "+filenames[i]+", valid File: "+filenames[i].endsWith(".xml"));
+  //println("File name: "+filenames[i]+", valid File: "+filenames[i].endsWith(".xml"));
   if(filenames[i].endsWith(".xml")){
-  featureVectorsXML[i] = folder+"/"+filenames[i];
+  featureVectorsAL.add(folder+"/"+filenames[i]);
   //println(featureVectorsXML[i]);
       } else {
   // do nothing    
@@ -67,7 +67,8 @@ void jMIR_connect() {
   String taxonomyXML = dataPath("")+"/Taxonomy.xml";
   String featureKeyXML = dataPath("")+"/FeatureKey.xml";
   String classificationXML = dataPath("")+"/Classifications.xml";
-
+  String[] featureVectorsXML =  new String[featureVectorsAL.size()];
+  featureVectorsXML = featureVectorsAL.toArray(featureVectorsXML);
  //instantiateDataboard(taxonomyXML, featureKeyXML, featureVectorsXML, classificationXML);
 
 }

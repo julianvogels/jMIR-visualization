@@ -9,7 +9,7 @@
 */
 
 void setup() {
-  size(310, 310); 
+  size(305, 390); 
   
   // call the jMIR connection setup
   jMIR_connect();

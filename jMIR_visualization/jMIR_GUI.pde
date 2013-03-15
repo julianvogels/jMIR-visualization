@@ -26,6 +26,9 @@ import java.awt.Frame;
 import java.awt.BorderLayout;
 ControlFrame cf;
 
+// GUI general
+Textlabel title;
+Textlabel description;
 // browseFileGUI
 Textlabel myTextlabelA;
 File currentDirectory = new File(dataPath(""));
@@ -53,16 +56,32 @@ void jMIR_GUI() {
   cp5.setColorValue(0xffffffff);
   cp5.setColorActive(0xffff0000);
   //cp5.setControlFont(font);
+  int fileBrowseGUIyOffset = 85;
+  int fileBrowseGUIxOffset = 20;
+  browseFileGUI(fileBrowseGUIxOffset, fileBrowseGUIyOffset, 1, "Feature Vectors XML or folder containing XMLs", "feature vectors");
+  browseFileGUI(fileBrowseGUIxOffset, 60+fileBrowseGUIyOffset, 2, "Taxonomy XML", "taxonomy");
+  browseFileGUI(fileBrowseGUIxOffset, 120+fileBrowseGUIyOffset, 3, "Feature Key XML", "feature key");
+  browseFileGUI(fileBrowseGUIxOffset, 180+fileBrowseGUIyOffset, 4, "Classification XML", "classification");
   
-  browseFileGUI(20, 25, 1, "Feature Vectors XML or folder containing XMLs", "feature vectors");
-  browseFileGUI(20, 85, 2, "Taxonomy XML", "taxonomy");
-  browseFileGUI(20, 145, 3, "Feature Key XML", "feature key");
-  browseFileGUI(20, 205, 4, "Classification XML", "classification");
+  // create title and description
+  Textlabel title = cp5.addTextlabel("jMIR visualization")
+                    .setText("jMIR visualization")
+                    .setPosition(fileBrowseGUIxOffset-4,10)
+                    .setColorValue(0x00000000)
+                    .setFont(font)
+                    ;
+                    
+    // create title and description
+  Textlabel description = cp5.addTextlabel("description")
+                    .setText("Please provide the exported \njMIR ACEXML 1.0 documents.")
+                    .setPosition(fileBrowseGUIxOffset-4,35)
+                    .setColorValue(0x00000000)
+                    ;
   
   // create the validation button
   cp5.addButton("Confirm")
-     .setPosition(19,270)
-     .setSize(271,19)
+     .setPosition(19,245+fileBrowseGUIyOffset)
+     .setSize(271,40)
      .getCaptionLabel().align(ControlP5.CENTER, ControlP5.CENTER)
      ;
 }
@@ -82,7 +101,6 @@ void browseFileGUI(int x, int y, int id, String headline, String desc) {
      .setAutoClear(false)
      ; 
   
-  // TODO query for folder
   Textlabel myTextlabelA = cp5.addTextlabel("FileBrowseLabel"+(id*10))
                     .setText(headline)
                     .setPosition(x-4,y)
@@ -266,12 +284,13 @@ public void Confirm(int theValue) {
   txts[2] = ((Textfield)cp5.getController("classification"));
 
   // Checking for multiple entries in featureVectors field (Comma separated)
-  Textfield featureVectors = ((Textfield)cp5.getController("feature keys"));
+  Textfield featureVectors = ((Textfield)cp5.getController("feature vectors"));
   
   // Split entry to get the single file paths
-  //println(((Textfield)cp5.getController("feature vectors")).getText());
+  println(featureVectors);
+  println(((Textfield)cp5.getController("feature vectors"))+" with text: "+featureVectors.getText());
   //println(((Textfield)cp5.getController("taxonomy")));
-  if (((Textfield)cp5.getController("feature vectors"))!=null) {
+  if (featureVectors!=null) {
   featureVecInput = splitTokens(featureVectors.getText(), ",");
 
   // Cycle through Feature Vector field (possible multiple entries)

@@ -223,7 +223,7 @@ void controlEvent(ControlEvent theEvent) {
         concatString = concatString.concat(",");
         }
       concatString = concatString.concat(browseFile1[i]);
-      println("file: "+browseFile1[i]+", concatenated String "+concatString);
+      //println("file: "+browseFile1[i]+", concatenated String "+concatString);
       }
     Textfield txt = ((Textfield)cp5.getController("feature vectors"));  
     txt.setValue(""+concatString);  
@@ -268,7 +268,7 @@ void controlEvent(ControlEvent theEvent) {
 // function colorA will receive changes from 
 // controller with name colorA
 public void Confirm(int theValue) {
-  println("a button event from validation Button: "+theValue);
+  //println("a button event from validation Button: "+theValue);
   if(theValue==1) {
     
   // if error occurs, error flag will be set
@@ -287,9 +287,6 @@ public void Confirm(int theValue) {
   Textfield featureVectors = ((Textfield)cp5.getController("feature vectors"));
   
   // Split entry to get the single file paths
-  println(featureVectors);
-  println(((Textfield)cp5.getController("feature vectors"))+" with text: "+featureVectors.getText());
-  //println(((Textfield)cp5.getController("taxonomy")));
   if (featureVectors!=null) {
   featureVecInput = splitTokens(featureVectors.getText(), ",");
 
@@ -298,38 +295,35 @@ public void Confirm(int theValue) {
     //check if file is an XML file
     if(featureVecInput[i].endsWith(".xml")) {  
       // check if file exists
-      //File checkFile = new File(featureVecInput[i]);
-      //if(!checkFile.exists()) {
-      //errorFlag = true;
-      //}      
+      File checkFile = new File(featureVecInput[i]);
+      if(!checkFile.exists()) {
+      errorFlag = true;
+      }      
     } else {
       errorFlag = true;
-      println(1);
       // Label: Only XML files!
       featureVectors.setText("ONLY XML FILES!");
     }
   }
   } else { 
   errorFlag = true; 
-  println(2);
   }
     
 
   // Instantiate File Objects
-  //File[] filePaths = new File[3];
+  File[] filePaths = new File[3];
   // Cycle through single file fields
   for (int i = 0; i < txts.length; i++) {
     // Check if file is an XML file
     if(txts[i].getText().endsWith(".xml")) {        
-      //filePaths[i] = new File(txts[i].getText());
+      filePaths[i] = new File(txts[i].getText());
       // Check if file exists
-      //if(!filePaths[i].exists()) {
-      //errorFlag = true;
-      //}
+      if(!filePaths[i].exists()) {
+      errorFlag = true;
+      }
     } else {
       // Label: Only XML files!
       errorFlag = true;
-      println(3);
       txts[i].setText("ONLY XML FILES!");
     }
   }
@@ -342,6 +336,6 @@ public void Confirm(int theValue) {
     String classificationXML = txts[2].getText();
     //instantiateDataboard(taxonomyXML, featureKeyXML, featureVectorsXML, classificationXML);
     }
-      println("Variables: errorFlag "+errorFlag);
+      //println("errorFlag "+errorFlag);
   }
 }

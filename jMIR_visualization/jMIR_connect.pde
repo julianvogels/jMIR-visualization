@@ -16,23 +16,6 @@ import ace.gui.*;
 // Declaration of the DataBoard class (jMIR library)
 DataBoard dataBoard;
 
-
-public void instantiateDataBoard(String taxonomyXML, String featureKeyXML, String[] featureVectorsXML, String classificationXML) {
-
-  // Instantiate DataBoard
-  try {
-    dataBoard = new DataBoard(taxonomyXML, featureKeyXML, featureVectorsXML, classificationXML);
-    // call the data preprocessor setup
-    jMIR_preprocessor();
-  
-  } catch (Exception e) {
-    print("Error creating DataBoard instance. Did you install the dependancies properly? \nError: ");
-    e.printStackTrace();
-  }
-  
-}
-
-
 void jMIR_connect() {
   // get the FeatureVectors folder path
   java.io.File folder = new java.io.File(dataPath("")+"/FeatureVectors/");
@@ -51,8 +34,8 @@ void jMIR_connect() {
   }
   }
   // Create an Array for the feature vectors. There can be multiple feature vector files
-  //String[] featureVectorsXML = new String[XMLcount];
   ArrayList<String> featureVectorsAL = new ArrayList<String>();
+  
   // get file names and write into array
   for (int i = 0; i < filenames.length; i++) {
   //println("File name: "+filenames[i]+", valid File: "+filenames[i].endsWith(".xml"));
@@ -69,8 +52,21 @@ void jMIR_connect() {
   String classificationXML = dataPath("")+"/Classifications.xml";
   String[] featureVectorsXML =  new String[featureVectorsAL.size()];
   featureVectorsXML = featureVectorsAL.toArray(featureVectorsXML);
- //instantiateDataboard(taxonomyXML, featureKeyXML, featureVectorsXML, classificationXML);
-
+  //boolean isError = dataBoard(taxonomyXML, featureKeyXML, featureVectorsXML, classificationXML);
+   
 }
 
+
+boolean dataBoard(String taxonomyXML, String featureKeyXML, String[] featureVectorsXML, String classificationXML) {
+// Instantiate DataBoard
+  try {
+    dataBoard = new DataBoard(taxonomyXML, featureKeyXML, featureVectorsXML, classificationXML);
+    // call the data preprocessor setup
+    return false;
+  } catch (Exception e) {
+    print("Error creating DataBoard instance. Did you install the dependancies properly? \nError: ");
+    e.printStackTrace();
+    return true;
+  }
+}
 

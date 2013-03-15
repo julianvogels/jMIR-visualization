@@ -29,12 +29,14 @@ ControlFrame cf;
 // GUI general
 Textlabel title;
 Textlabel description;
+
 // browseFileGUI
 Textlabel myTextlabelA;
 File currentDirectory = new File(dataPath(""));
 
+
 void jMIR_GUI() {
-  
+
   // Font customizations
   PFont  font = createFont("Helvetica", 20);
   textFont(font);
@@ -50,12 +52,14 @@ void jMIR_GUI() {
   // TODO SETUP CONTROLP5 GUI elements
   cp5 = new ControlP5(this);
   
+  // change GUI colors
   cp5.setColorForeground(0xffDC241F);
   cp5.setColorBackground(0xff660000);
   cp5.setColorLabel(0xffcccccc);
   cp5.setColorValue(0xffffffff);
   cp5.setColorActive(0xffff0000);
-  //cp5.setControlFont(font);
+  
+  // Offset the whole file chooser block and confirm button
   int fileBrowseGUIyOffset = 85;
   int fileBrowseGUIxOffset = 20;
   browseFileGUI(fileBrowseGUIxOffset, fileBrowseGUIyOffset, 1, "Feature Vectors XML or folder containing XMLs", "feature vectors");
@@ -88,7 +92,7 @@ void jMIR_GUI() {
 
 
 void browseFileGUI(int x, int y, int id, String headline, String desc) {
-    cp5.addBang("Browse"+(id*10))
+    cp5.addBang("Browse"+(id*10+1))
      .setPosition(x+220,y+15)
      .setId(id*10+1)
      .setCaptionLabel("Browse")
@@ -258,10 +262,6 @@ void controlEvent(ControlEvent theEvent) {
         } 
     }   
    
-    // Validation of the entries made in the four text fields
-    if(theEvent.controller().getId()==41) {
-    
-    }
   }  
 }
 
@@ -288,6 +288,7 @@ public void Confirm(int theValue) {
   
   // Split entry to get the single file paths
   if (featureVectors!=null) {
+  //println(featureVectors);
   featureVecInput = splitTokens(featureVectors.getText(), ",");
 
   // Cycle through Feature Vector field (possible multiple entries)
@@ -298,6 +299,7 @@ public void Confirm(int theValue) {
       File checkFile = new File(featureVecInput[i]);
       if(!checkFile.exists()) {
       errorFlag = true;
+      featureVectors.setText("FILE DOESN\'T EXIST!");
       }      
     } else {
       errorFlag = true;
@@ -306,7 +308,9 @@ public void Confirm(int theValue) {
     }
   }
   } else { 
+  // textfield was empty
   errorFlag = true; 
+  featureVectors.setText("REQUIRED FIELD!");
   }
     
 
@@ -319,6 +323,7 @@ public void Confirm(int theValue) {
       filePaths[i] = new File(txts[i].getText());
       // Check if file exists
       if(!filePaths[i].exists()) {
+      txts[i].setText("FILE DOESN\'T EXIST!");
       errorFlag = true;
       }
     } else {
@@ -329,13 +334,44 @@ public void Confirm(int theValue) {
   }
     if (!errorFlag) {
     // Window config
-    cf = addControlFrame("Data Visualization Panel", 960, 800);
     String taxonomyXML = txts[0].getText();
     String featureKeyXML = txts[1].getText();
     String[] featureVectorsXML = featureVecInput;
     String classificationXML = txts[2].getText();
     //instantiateDataboard(taxonomyXML, featureKeyXML, featureVectorsXML, classificationXML);
+    boolean isError = dataBoard(taxonomyXML, featureKeyXML, featureVectorsXML, classificationXML);
+    println("dataBoard error: "+isError);
+    initVisualization(isError);
+
     }
       //println("errorFlag "+errorFlag);
   }
+}
+
+void dataBoardError() {
+  // TODO: only display where the error was produced
+  
+  // Storing the values in the single file fields
+  Textfield[] txts = new Textfield[4];
+  txts[0] = ((Textfield)cp5.getController("taxonomy"));
+  txts[1] = ((Textfield)cp5.getController("feature key"));
+  txts[2] = ((Textfield)cp5.getController("classification"));
+  txts[3] = ((Textfield)cp5.getController("feature vectors"));
+  
+  for (int i = 0; i < txts.length; i++) {
+  txts[i].setText("DATA ERROR!");
+  }
+}
+
+// checks if dataBoard produced an error and calls either
+// dataBoardError() or initializes the Visualization
+void initVisualization(boolean isError) {
+    if(isError) {
+    // databoard is angry
+    dataBoardError();
+    } else {
+    // DataBoard returned all is fine
+    cf = addControlFrame("Data Visualization Panel", 960, 800);
+    jMIR_preprocessor();
+    }
 }

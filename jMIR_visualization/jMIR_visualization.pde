@@ -9,13 +9,10 @@
 */
 
 void setup() {
-  size(640, 360);
+  size(310, 310); 
   
   // call the jMIR connection setup
   jMIR_connect();
-  
-  // call the data preprocessor setup
-  jMIR_preprocessor();
   
   // call the graphical user interface setup
   jMIR_GUI();

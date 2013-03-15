@@ -17,8 +17,24 @@ import ace.gui.*;
 DataBoard dataBoard;
 
 
+public void instantiateDataBoard(String taxonomyXML, String featureKeyXML, String[] featureVectorsXML, String classificationXML) {
+
+  // Instantiate DataBoard
+  try {
+    dataBoard = new DataBoard(taxonomyXML, featureKeyXML, featureVectorsXML, classificationXML);
+    // call the data preprocessor setup
+    jMIR_preprocessor();
+  
+  } catch (Exception e) {
+    print("Error creating DataBoard instance. Did you install the dependancies properly? \nError: ");
+    e.printStackTrace();
+  }
+  
+}
+
+
 void jMIR_connect() {
-// get the FeatureVectors folder path
+  // get the FeatureVectors folder path
   java.io.File folder = new java.io.File(dataPath("")+"/FeatureVectors/");
 
   // list the files in the FeatureVectors folder
@@ -27,27 +43,33 @@ void jMIR_connect() {
   // get the number of feature vectors
   //println(filenames.length + " files in specified directory");
   
-  
+  // count valid XML files in folder
+  int XMLcount = 0;
+  for (int i = 0; i < filenames.length; i++) {
+  if(filenames[i].endsWith(".xml")){ 
+  XMLcount++;
+  }
+  }
   // Create an Array for the feature vectors. There can be multiple feature vector files
-  String[] featureVectorsXML = new String[filenames.length];
-  
+  String[] featureVectorsXML = new String[XMLcount];
+;
   // get file names and write into array
   for (int i = 0; i < filenames.length; i++) {
-  //println(filenames[i]);
+  println("File name: "+filenames[i]+", valid File: "+filenames[i].endsWith(".xml"));
+  if(filenames[i].endsWith(".xml")){
   featureVectorsXML[i] = folder+"/"+filenames[i];
+  //println(featureVectorsXML[i]);
+      } else {
+  // do nothing    
+      }
   }
-  
   // Load the XML documents
   String taxonomyXML = dataPath("")+"/Taxonomy.xml";
   String featureKeyXML = dataPath("")+"/FeatureKey.xml";
   String classificationXML = dataPath("")+"/Classifications.xml";
 
-  // Instantiate DataBoard
-  try {
-    dataBoard = new DataBoard(taxonomyXML, featureKeyXML, featureVectorsXML, classificationXML);
-  } catch (Exception e) {
-    print("Error creating DataBoard instance. Did you install the dependancies properly? \nError: ");
-    e.printStackTrace();
-  }
+ //instantiateDataboard(taxonomyXML, featureKeyXML, featureVectorsXML, classificationXML);
 
 }
+
+

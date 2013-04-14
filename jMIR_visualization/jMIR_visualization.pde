@@ -8,8 +8,18 @@
 *  Benjamin Bacon (benjamin.bacon@mail.mcgill.ca)
 */
 
+// Scaling solution
+//int frameHeight = 390;
+//int frameWidth = round(frameHeight*1.2);
+
+int frameHeight = 640;
+int frameWidth = 960;
+
+
+boolean DEBUG = true;
+
 void setup() {
-  size(305, 390); 
+  size(frameWidth, frameHeight, P2D); 
   
   // call the jMIR connection setup
   jMIR_connect();
@@ -28,5 +38,6 @@ void setup() {
 
 void draw() {
   background(255);
+  jMIR_GUI_run();
 }
 

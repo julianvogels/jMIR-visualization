@@ -14,10 +14,12 @@ filechooser taken from http://processinghacks.com/hacks:filechooser
 modified by Julian Vogels
 */
 
+//===============================
+// IMPORTS
+//===============================
+
 // ControlP5 GUI library
 import controlP5.*;
-
-ControlP5 cp5;
 
 // General UI elements 
 import javax.swing.*; 
@@ -25,26 +27,60 @@ import javax.swing.*;
 // Window Management
 import java.awt.Frame;
 import java.awt.BorderLayout;
-ControlFrame cf;
+
+//===============================
+// DECLARATIONS
+//===============================
+
+ControlP5 fileCP5;
+ControlP5 mainGUI;
 
 // Frame management
+ControlFrame cf;
 float fFrameHeight = (float) frameHeight;
-
-// GUI Groups
-Group g1;
 
 // GUI general
 Textlabel title;
 Textlabel description;
 Label confirmButton;
+// browseFileGUI components
+Label browseBang1;
+Textlabel browseLabel1;
+Textfield browseField1;
+Label browseBang2;
+Textlabel browseLabel2;
+Textfield browseField2;
+Label browseBang3;
+Textlabel browseLabel3;
+Textfield browseField3;
+Label browseBang4;
+Textlabel browseLabel4;
+Textfield browseField4;
 
 // browseFileGUI
-Textlabel myTextlabelA;
 File currentDirectory = new File(dataPath(""));
+int fileBrowseGUIyOffset;
+int fileBrowseGUIxOffset;
 
-// Assets
+// MainGUI
+// ---------------------------
+ListBox l;
+
+// GUI Groups
+//Group g1;
+
+// Other GUI elements
 PImage fileGUIbg;
 
+// Flags and runtime variables
+// ---------------------------
+// picture fade
+boolean fadeGUIFlag = false;
+int fadeGUIVal = 0;
+// GUI move
+boolean moveFileGUIFlag = false;
+
+boolean renderBGImage = false;
 
 void jMIR_GUI() {
   
@@ -66,94 +102,170 @@ void jMIR_GUI() {
     e.printStackTrace();  
   }
   
-  // SETUP CONTROLP5 GUI elements
-  cp5 = new ControlP5(this);
+  //===============================
+  // CONTROL P5 SETUP | GENERAL
+  //===============================
   
-  // TODO: use later
-//  g1 = cp5.addGroup("g1")
-//                .setPosition(20,80)
-//                .setWidth(300)
-//                ;
-                
+  // SETUP CONTROLP5 GUI elements
+  fileCP5 = new ControlP5(this);
+  fileCP5.setAutoDraw(false);
+  
   // change GUI colors
-  cp5.setColorForeground(0xffDC241F);
-  cp5.setColorBackground(0xff660000);
-  cp5.setColorLabel(0xffcccccc);
-  cp5.setColorValue(0xffffffff);
-  cp5.setColorActive(0xffff0000);
+//  fileCP5.setColorForeground(0xffDC241F);
+//  fileCP5.setColorBackground(0xff660000);
+//  fileCP5.setColorLabel(0xffcccccc);
+//  fileCP5.setColorValue(0xffffffff);
+//  fileCP5.setColorActive(0xffff0000);
   
   // Offset the whole file chooser block and confirm button
-  int fileBrowseGUIyOffset = width/2-200+85; // was 85
-  int fileBrowseGUIxOffset = width/2-150; // was 20
+  fileBrowseGUIyOffset = height/2-185; // was 85
+  fileBrowseGUIxOffset = width/2-135; // was 20
   
-  // fileGUI Background image
-  fileGUIbg = loadImage("fileGUIbg.png");
-  // 
+  //===============================
+  // CONTROL P5 SETUP | ELEMENTS
+  //===============================
   
-  browseFileGUI(fileBrowseGUIxOffset, fileBrowseGUIyOffset, 1, "Feature Vectors XML or folder containing XMLs", "feature vectors");
-  browseFileGUI(fileBrowseGUIxOffset, 60+fileBrowseGUIyOffset, 2, "Taxonomy XML", "taxonomy");
-  browseFileGUI(fileBrowseGUIxOffset, 120+fileBrowseGUIyOffset, 3, "Feature Key XML", "feature key");
-  browseFileGUI(fileBrowseGUIxOffset, 180+fileBrowseGUIyOffset, 4, "Classification XML", "classification");
+  // File Browse GUI
+  // ------------------------------
   
   // create title and description
-  title = cp5.addTextlabel("jMIR visualization")
+  title = fileCP5.addTextlabel("jMIR visualization")
                     .setText("jMIR visualization")
-                    .setPosition(fileBrowseGUIxOffset-4,10)
+                    .setPosition(fileBrowseGUIxOffset-4,fileBrowseGUIyOffset)
                     .setColorValue(0x00000000)
                     .setFont(font)
+                    .setId(51)
                     ;
                     
     // create title and description
-  description = cp5.addTextlabel("description")
+  description = fileCP5.addTextlabel("description")
                     .setText("Please provide the exported \njMIR ACEXML 1.0 documents.")
-                    .setPosition(fileBrowseGUIxOffset-4,35)
+                    .setId(52)
+                    .setPosition(fileBrowseGUIxOffset-4,fileBrowseGUIyOffset+25)
                     .setColorValue(0x00000000)
                     ;
   
   // create the validation button
-  confirmButton = cp5.addButton("Confirm")
-     .setPosition(19,245+fileBrowseGUIyOffset)
-     .setSize(271,40)
-     .getCaptionLabel().align(ControlP5.CENTER, ControlP5.CENTER)
-     ;
-     
-     
-      // set file paths if DEBUG is set
-  if (DEBUG) {
-    Textfield txt1 = ((Textfield)cp5.getController("feature vectors"));
-    txt1.setValue("/Volumes/Data HD/Users/Julian/Documents/Processing/jMIR-visualization/jMIR_visualization/data/FeatureVectors/FeatureVectors.xml");  
-    Textfield txt2 = ((Textfield)cp5.getController("feature key"));
-    txt2.setValue("/Volumes/Data HD/Users/Julian/Documents/Processing/jMIR-visualization/jMIR_visualization/data/FeatureKey.xml");  
-    Textfield txt3 = ((Textfield)cp5.getController("taxonomy"));
-    txt3.setValue("/Volumes/Data HD/Users/Julian/Documents/Processing/jMIR-visualization/jMIR_visualization/data/Taxonomy.xml");  
-    Textfield txt4 = ((Textfield)cp5.getController("classification"));
-    txt4.setValue("/Volumes/Data HD/Users/Julian/Documents/Processing/jMIR-visualization/jMIR_visualization/data/Classifications.xml");  
+  confirmButton = fileCP5.addButton("Confirm")
+                   .setId(53)
+                   .setPosition(fileBrowseGUIxOffset,330+fileBrowseGUIyOffset)
+                   .setSize(271,40)
+                   .getCaptionLabel().align(ControlP5.CENTER, ControlP5.CENTER)
+                   ;
+                   
+                   
+                   
+   // FileChooser1
+   browseBang1 = fileCP5.addBang("BrowseBang1")
+                   .setPosition(fileBrowseGUIxOffset+220,fileBrowseGUIyOffset+90)
+                   .setId(11)
+                   .setCaptionLabel("Browse")
+                   .getCaptionLabel().align(ControlP5.CENTER, ControlP5.CENTER)
+                   ;    
   
-  }
-}
+  browseField1 = fileCP5.addTextfield("feature vectors")
+                   .setId(10)
+                   .setPosition(fileBrowseGUIxOffset,fileBrowseGUIyOffset+90)
+                   .setAutoClear(false)
+                   ; 
+  
+  browseLabel1 = fileCP5.addTextlabel("FileBrowseLabel1")
+                   .setText("Feature Vectors XML or folder containing XMLs")
+                   .setPosition(fileBrowseGUIxOffset-4,fileBrowseGUIyOffset+75)
+                   .setColorValue(0x00000000)
+                   ;  
 
-
-void browseFileGUI(int x, int y, int id, String headline, String desc) {
+   // FileChooser2
+   browseBang2 = fileCP5.addBang("BrowseBang2")
+                   .setPosition(fileBrowseGUIxOffset+220,fileBrowseGUIyOffset+150)
+                   .setId(21)
+                   .setCaptionLabel("Browse")
+                   .getCaptionLabel().align(ControlP5.CENTER, ControlP5.CENTER)
+                   ;    
+  
+  browseField2 = fileCP5.addTextfield("taxonomy")
+                   .setId(20)
+                   .setPosition(fileBrowseGUIxOffset,fileBrowseGUIyOffset+150)
+                   .setAutoClear(false)
+                   ; 
+  
+  browseLabel2 = fileCP5.addTextlabel("FileBrowseLabel2")
+                   .setText("Taxonomy XML")
+                   .setPosition(fileBrowseGUIxOffset-4,fileBrowseGUIyOffset+135)
+                   .setColorValue(0x00000000)
+                   ;      
+  
+     // FileChooser3
+   browseBang3 = fileCP5.addBang("BrowseBang3")
+                   .setPosition(fileBrowseGUIxOffset+220,fileBrowseGUIyOffset+210)
+                   .setId(31)
+                   .setCaptionLabel("Browse")
+                   .getCaptionLabel().align(ControlP5.CENTER, ControlP5.CENTER)
+                   ;    
+  
+  browseField3 = fileCP5.addTextfield("feature key")
+                   .setId(30)
+                   .setPosition(fileBrowseGUIxOffset,fileBrowseGUIyOffset+210)
+                   .setAutoClear(false)
+                   ; 
+  
+  browseLabel3 = fileCP5.addTextlabel("FileBrowseLabel3")
+                   .setText("Feature Key XML")
+                   .setPosition(fileBrowseGUIxOffset-4,fileBrowseGUIyOffset+195)
+                   .setColorValue(0x00000000)
+                   ;  
+                 
+     // FileChooser4
+   browseBang4 = fileCP5.addBang("BrowseBang4")
+                   .setPosition(fileBrowseGUIxOffset+220,fileBrowseGUIyOffset+270)
+                   .setId(41)
+                   .setCaptionLabel("Browse")
+                   .getCaptionLabel().align(ControlP5.CENTER, ControlP5.CENTER)
+                   ;    
+  
+  browseField4 = fileCP5.addTextfield("classification")
+                   .setId(40)
+                   .setPosition(fileBrowseGUIxOffset,fileBrowseGUIyOffset+270)
+                   .setAutoClear(false)
+                   ; 
+  
+  browseLabel4 = fileCP5.addTextlabel("FileBrowseLabel4")
+                   .setText("Classification XML")
+                   .setPosition(fileBrowseGUIxOffset-4,fileBrowseGUIyOffset+255)
+                   .setColorValue(0x00000000)
+                   ;   
     
-    cp5.addBang("Browse"+(id*10+1))
-     .setPosition(x+220,y+15)
-     .setId(id*10+1)
-     .setCaptionLabel("Browse")
-     .getCaptionLabel().align(ControlP5.CENTER, ControlP5.CENTER)
-     ;    
+     
+    // GROUPS
+    // TODO: use later
+//  g1 = fileCP5.addGroup("g1")
+//                .setPosition(20,80)
+//                .setWidth(300)
+//                ;   
+     
+  //===============================
+  // ADDITIONAL GUI SETUP
+  //===============================     
   
-  cp5.addTextfield(desc)
-     .setId(id*10)
-     .setPosition(x,y+15)
-     .setAutoClear(false)
-     ; 
+  // fileGUI Background image
+  fileGUIbg = loadImage("fileGUIbg.png");
   
-  Textlabel myTextlabelA = cp5.addTextlabel("FileBrowseLabel"+(id*10))
-                    .setText(headline)
-                    .setPosition(x-4,y)
-                    .setColorValue(0x00000000)
-                    ;
+  //===============================
+  // DEBUGGING
+  //===============================
   
+  // set file paths if DEBUG is set
+  if (DEBUG) {
+    Textfield txt1 = ((Textfield)fileCP5.getController("feature vectors"));
+    txt1.setValue("/Volumes/Data HD/Users/Julian/Documents/Processing/jMIR-visualization/jMIR_visualization/data/FeatureVectors/FeatureVectors.xml");  
+    Textfield txt2 = ((Textfield)fileCP5.getController("feature key"));
+    txt2.setValue("/Volumes/Data HD/Users/Julian/Documents/Processing/jMIR-visualization/jMIR_visualization/data/FeatureKey.xml");  
+    Textfield txt3 = ((Textfield)fileCP5.getController("taxonomy"));
+    txt3.setValue("/Volumes/Data HD/Users/Julian/Documents/Processing/jMIR-visualization/jMIR_visualization/data/Taxonomy.xml");  
+    Textfield txt4 = ((Textfield)fileCP5.getController("classification"));
+    txt4.setValue("/Volumes/Data HD/Users/Julian/Documents/Processing/jMIR-visualization/jMIR_visualization/data/Classifications.xml");  
+  }
+
 }
 
 String fileChooser(int dataType) {
@@ -272,7 +384,7 @@ void controlEvent(ControlEvent theEvent) {
       concatString = concatString.concat(browseFile1[i]);
       //println("file: "+browseFile1[i]+", concatenated String "+concatString);
       }
-    Textfield txt = ((Textfield)cp5.getController("feature vectors"));  
+    Textfield txt = ((Textfield)fileCP5.getController("feature vectors"));  
     txt.setValue(""+concatString);  
     //println(concatString);
     }   
@@ -282,7 +394,7 @@ void controlEvent(ControlEvent theEvent) {
     if(theEvent.controller().getId()==21) {
     String browseFile = fileChooser(0);
     if(browseFile != null) {
-    Textfield txt = ((Textfield)cp5.getController("taxonomy"));
+    Textfield txt = ((Textfield)fileCP5.getController("taxonomy"));
     txt.setValue(""+browseFile);  
         }
     } 
@@ -291,7 +403,7 @@ void controlEvent(ControlEvent theEvent) {
     if(theEvent.controller().getId()==31) {
     String browseFile = fileChooser(0);
     if(browseFile != null) {
-    Textfield txt = ((Textfield)cp5.getController("feature key"));
+    Textfield txt = ((Textfield)fileCP5.getController("feature key"));
     txt.setValue(""+browseFile);  
         }
     }    
@@ -300,7 +412,7 @@ void controlEvent(ControlEvent theEvent) {
     if(theEvent.controller().getId()==41) {
     String browseFile = fileChooser(0);
     if(browseFile != null) {
-    Textfield txt = ((Textfield)cp5.getController("classification"));
+    Textfield txt = ((Textfield)fileCP5.getController("classification"));
     txt.setValue(""+browseFile);  
         } 
     }   
@@ -322,12 +434,12 @@ public void Confirm(int theValue) {
     
   // Storing the values in the single file fields
   Textfield[] txts = new Textfield[3];
-  txts[0] = ((Textfield)cp5.getController("taxonomy"));
-  txts[1] = ((Textfield)cp5.getController("feature key"));
-  txts[2] = ((Textfield)cp5.getController("classification"));
+  txts[0] = ((Textfield)fileCP5.getController("taxonomy"));
+  txts[1] = ((Textfield)fileCP5.getController("feature key"));
+  txts[2] = ((Textfield)fileCP5.getController("classification"));
 
   // Checking for multiple entries in featureVectors field (Comma separated)
-  Textfield featureVectors = ((Textfield)cp5.getController("feature vectors"));
+  Textfield featureVectors = ((Textfield)fileCP5.getController("feature vectors"));
   
   // Split entry to get the single file paths
   if (featureVectors!=null) {
@@ -396,10 +508,10 @@ void dataBoardError() {
   
   // Storing the values in the single file fields
   Textfield[] txts = new Textfield[4];
-  txts[0] = ((Textfield)cp5.getController("taxonomy"));
-  txts[1] = ((Textfield)cp5.getController("feature key"));
-  txts[2] = ((Textfield)cp5.getController("classification"));
-  txts[3] = ((Textfield)cp5.getController("feature vectors"));
+  txts[0] = ((Textfield)fileCP5.getController("taxonomy"));
+  txts[1] = ((Textfield)fileCP5.getController("feature key"));
+  txts[2] = ((Textfield)fileCP5.getController("classification"));
+  txts[3] = ((Textfield)fileCP5.getController("feature vectors"));
   
   for (int i = 0; i < txts.length; i++) {
   txts[i].setText("DATA ERROR!");
@@ -414,28 +526,125 @@ void initVisualization(boolean isError) {
     dataBoardError();
     } else {
     // DataBoard returned all is fine
+    
+    // Second frame
     //cf = addControlFrame("Data Visualization Panel", 960, 800);
 //    while (fFrameHeight <= 960) {
 //    fFrameHeight *= 1.05;
 //    frame.setSize(round(fFrameHeight*1.2), round(fFrameHeight));
 //    frame.setLocation(displayWidth/2-round(fFrameHeight*1.2)/2, displayHeight/2-round(fFrameHeight)/2);
 //    }
-    frame.setTitle("jMIR Visualization");
+
+
+    frame.setTitle("jMIR Visualization - Choose your data");
+    fadeGUIFlag = true;
+    //moveFileGUIFlag = true;
     
-    // Remove GUI elements that are not needed anymore
-    cp5.remove(title.getName());
-    // STUPID
-    //cp5.remove(description.getName());
-    //description.remove();
-    // confirmButton.remove();
-    println(title.getName());
     
-    background(0xFFFFFFFF);
+      
+//    title.hide();
+//    description.hide();
+//    confirmButton.hide();
+//    browseBang1.hide();
+//    browseField1.hide();
+//    browseLabel1.hide();
+//    browseBang2.hide();
+//    browseField2.hide();
+//    browseLabel2.hide();
+//    browseBang3.hide();
+//    browseField3.hide();
+//    browseLabel3.hide();
+//    browseBang4.hide();
+//    browseField4.hide();
+//    browseLabel4.hide();
+    
+    // Launch the Preprocessor
     jMIR_preprocessor();
+    
     }
 }
 
+void fadeGUI(boolean fadeGUIFlag_) {
+  if (fadeGUIFlag_) {
+    
+    if (fadeGUIVal < 100) {
+      fadeGUIVal = fadeGUIVal+1;  
+      fill(255, fadeGUIVal*2.55);
+    } else {
+      fadeGUIFlag = false;
+      fadeGUIVal = 0; 
+      fileCP5.hide();
+      // Setup the mainGUI
+      setupMainGUI();
+    }
+  }
+}
+
+void moveFileGUI(boolean moveFileGUIFlag_) {
+  if (moveFileGUIFlag_) {
+    
+    if (fileBrowseGUIxOffset >= (-300)) {
+      fileBrowseGUIxOffset = fileBrowseGUIxOffset-2; 
+//      PVector titlevec = title.getPosition();
+//      titlevec.x = titlevec.x-2; 
+//      title.setPosition(titlevec);
+      println(title.getAbsolutePosition());
+    } else {
+      moveFileGUIFlag = false;
+    }
+  }
+}
+
 void jMIR_GUI_run() {
-image(fileGUIbg, width/2-250, height/2-200);
+  background(0xFFFFFFFF);
+  fileCP5.draw();
+  fill(255, fadeGUIVal*2.55);
+  fadeGUI(fadeGUIFlag);
+  rect(0,0,width,height);
+  //moveFileGUI(moveFileGUIFlag);
+  
+  if (renderBGImage)
+    image(fileGUIbg, fileBrowseGUIxOffset-65, fileBrowseGUIyOffset-65);
+
+}
+
+void setupMainGUI() {
+  mainGUI = new ControlP5(this);
+    
+  title = mainGUI.addTextlabel("jMIR visualization")
+                    .setText("jMIR visualization")
+                    .setPosition(10,10)
+                    .setColorValue(0x00000000)
+                    .setId(1)
+                    ;
+                    
+  l = mainGUI.addListBox("Feature Names")
+         .setPosition(10, 50)
+         .setSize(120, 120)
+         .setBarHeight(15)
+         ;  
+         
+  l.captionLabel().toUpperCase(true);
+  l.captionLabel().set("Feature Names");
+  l.captionLabel().style().marginTop = 3;
+  l.valueLabel().style().marginTop = 3; 
+
+
+    for (int i = 0; i < featureNames.length; i++) {
+    ListBoxItem lbi = l.addItem(featureNames[i], i);
+    lbi.setColorBackground(0xffff0000);
+  }
+  
+  int itemHeight = 15;
+  
+  if(featureNames.length < 20) {
+  l.setItemHeight(15);
+  itemHeight = 15;
+  } else {
+  l.setItemHeight(10);
+  itemHeight = 10;
+  }
+  l.setHeight(itemHeight*(featureNames.length+1));
+
 }
 

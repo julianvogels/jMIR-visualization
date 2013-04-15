@@ -8,23 +8,21 @@
 *  Benjamin Bacon (benjamin.bacon@mail.mcgill.ca)
 */
 
-
-
+String[] featureNames;
+FeatureDefinition[] featureDefinition;
+DataSet[] datasets;
+Taxonomy taxonomy;
 
 void jMIR_preprocessor() {
   
-  
-  // Example:
-  
   // Prints the Feature Names
-  String[] featureNames = dataBoard.getFeatureNames();
+  featureNames = dataBoard.getFeatureNames();
   println("Feature Names: ");
   for (int i = 0; i < featureNames.length; i++) {
     println(featureNames[i]);
   }
   println();
   
-  FeatureDefinition[] featureDefinition;
   featureDefinition = dataBoard.getFeatureDefinitions();
   println("Feature Description: ");
   for (int i = 0; i < featureDefinition.length; i++) {
@@ -32,11 +30,11 @@ void jMIR_preprocessor() {
   }
   println();
   
-  DataSet[] datasets;
+
   datasets = dataBoard.getFeatureVectors();
   println("Dataset Description: \n\n"+datasets[0].getDataSetDescription(0));
   
-  Taxonomy taxonomy;
+
   taxonomy = dataBoard.getTaxonomy();
   println("Taxonomy Structure: \n\n"+taxonomy.getFormattedTreeStructure());
 }

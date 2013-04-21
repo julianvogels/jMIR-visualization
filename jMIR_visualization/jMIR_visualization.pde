@@ -17,6 +17,7 @@ int frameWidth = 960;
 
 
 boolean DEBUG = true;
+int DEBUG_SET_CHOICE = 1;
 
 void setup() {
   size(frameWidth, frameHeight, P2D); 
@@ -26,18 +27,11 @@ void setup() {
   
   // call the graphical user interface setup
   jMIR_GUI();
-  
-  // call the graphics setup
-  jMIR_graphics();
-    
-  // Ask user for files
-  //openFiles();
 
 }
 
 
 void draw() {
-  background(255);
   jMIR_GUI_run();
 }
 

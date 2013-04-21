@@ -74,13 +74,16 @@ PImage fileGUIbg;
 
 // Flags and runtime variables
 // ---------------------------
+// File path check
+boolean errorFlag = false;
+
 // picture fade
 boolean fadeGUIFlag = false;
 int fadeGUIVal = 0;
 // GUI move
 boolean moveFileGUIFlag = false;
 
-boolean renderBGImage = false;
+boolean renderBGImage = true;
 
 void jMIR_GUI() {
   
@@ -256,6 +259,16 @@ void jMIR_GUI() {
   
   // set file paths if DEBUG is set
   if (DEBUG) {
+    if(DEBUG_SET_CHOICE == 1) {
+    Textfield txt1 = ((Textfield)fileCP5.getController("feature vectors"));
+    txt1.setValue("/Volumes/Data HD/Users/Julian/Documents/Processing/jMIR-visualization/jMIR_visualization/data/SLAC/SLAC_Feature_Values/Combined/combined_cultural_artist_10_class_audio_feature_values.xml, /Volumes/Data HD/Users/Julian/Documents/Processing/jMIR-visualization/jMIR_visualization/data/SLAC/SLAC_Feature_Values/Combined/combined_cultural_artist_10_class_symbolic_feature_values.xml");  
+    Textfield txt2 = ((Textfield)fileCP5.getController("feature key"));
+    txt2.setValue("/Volumes/Data HD/Users/Julian/Documents/Processing/jMIR-visualization/jMIR_visualization/data/SLAC/SLAC_Feature_Values/Combined/combined_cultural_artist_10_class_symbolic_audio_feature_defintions.xml");  
+    Textfield txt3 = ((Textfield)fileCP5.getController("taxonomy"));
+    txt3.setValue("/Volumes/Data HD/Users/Julian/Documents/Processing/jMIR-visualization/jMIR_visualization/data/SLAC/SLAC_Info_Files/SLAC_taxonomy_10_class.xml");  
+    Textfield txt4 = ((Textfield)fileCP5.getController("classification"));
+    txt4.setValue("/Volumes/Data HD/Users/Julian/Documents/Processing/jMIR-visualization/jMIR_visualization/data//SLAC/SLAC_Info_Files/SLAC_model_classifications_10_class.xml");  
+    } else if(DEBUG_SET_CHOICE == 2) {
     Textfield txt1 = ((Textfield)fileCP5.getController("feature vectors"));
     txt1.setValue("/Volumes/Data HD/Users/Julian/Documents/Processing/jMIR-visualization/jMIR_visualization/data/FeatureVectors/FeatureVectors.xml");  
     Textfield txt2 = ((Textfield)fileCP5.getController("feature key"));
@@ -264,11 +277,13 @@ void jMIR_GUI() {
     txt3.setValue("/Volumes/Data HD/Users/Julian/Documents/Processing/jMIR-visualization/jMIR_visualization/data/Taxonomy.xml");  
     Textfield txt4 = ((Textfield)fileCP5.getController("classification"));
     txt4.setValue("/Volumes/Data HD/Users/Julian/Documents/Processing/jMIR-visualization/jMIR_visualization/data/Classifications.xml");  
+    }
+    
   }
 
 }
 
-String fileChooser(int dataType) {
+String fileChooser() {
   
   String filePath;
   
@@ -300,7 +315,7 @@ String fileChooser(int dataType) {
 return filePath;
 }
 
-String[] filesChooser(int dataType) {
+String[] filesChooser() {
   // create a file chooser 
   final JFileChooser fc = new JFileChooser(); 
   fc.setCurrentDirectory(currentDirectory);  
@@ -348,10 +363,10 @@ String[] filesChooser(int dataType) {
 FileSet openFiles() {
   //Create a FileSet, containing the file paths to the XML documents
   FileSet fileSet = new FileSet();
-  fileSet.taxonomy = fileChooser(0);
-  fileSet.featureKey = fileChooser(1);
-  fileSet.featureVectors = filesChooser(2);
-  fileSet.classification = fileChooser(3);
+  fileSet.taxonomy = fileChooser();
+  fileSet.featureKey = filesChooser();
+  fileSet.featureVectors = filesChooser();
+  fileSet.classification = filesChooser();
   if(fileSet.taxonomy == null || fileSet.featureKey == null || fileSet.featureVectors == null || fileSet.classification == null) {
   // TODO add error
   println("big fat IO file error");
@@ -372,9 +387,9 @@ void controlEvent(ControlEvent theEvent) {
     print("control event from : "+theEvent.controller().name()+", ID: "+theEvent.controller().getId());
     println(", value : "+theEvent.controller().value());
     
-    // clicking on brwoseFileGUI1 browse button button: on success displays path in textField      
+    // clicking on brwoseFileGUI1 browse button button: on success displays path in textField  VECTORS    
     if(theEvent.controller().getId()==11) {
-    String[] browseFile1 = filesChooser(0);
+    String[] browseFile1 = filesChooser();
     if(browseFile1 != null) {
     String concatString = "";
       for (int i = 0; i < browseFile1.length; i++) {
@@ -390,119 +405,236 @@ void controlEvent(ControlEvent theEvent) {
     }   
     }
         
-    // clicking on brwoseFileGUI2 browse button button: on success displays path in textField      
+    // clicking on brwoseFileGUI2 browse button button: on success displays path in textField  TAXONOMY     
     if(theEvent.controller().getId()==21) {
-    String browseFile = fileChooser(0);
+    String browseFile = fileChooser();
     if(browseFile != null) {
     Textfield txt = ((Textfield)fileCP5.getController("taxonomy"));
     txt.setValue(""+browseFile);  
         }
     } 
  
-    // clicking on brwoseFileGUI3 browse button button: on success displays path in textField      
+    // clicking on brwoseFileGUI3 browse button button: on success displays path in textField  KEY
     if(theEvent.controller().getId()==31) {
-    String browseFile = fileChooser(0);
-    if(browseFile != null) {
-    Textfield txt = ((Textfield)fileCP5.getController("feature key"));
-    txt.setValue(""+browseFile);  
+    String[] browseFile3 = filesChooser();
+      if(browseFile3 != null) {
+        String concatString = "";
+        for (int i = 0; i < browseFile3.length; i++) {
+          if(i!=0) {
+          concatString = concatString.concat(",");
+          }
+          concatString = concatString.concat(browseFile3[i]);
+          //println("file: "+browseFile1[i]+", concatenated String "+concatString);
         }
+      Textfield txt = ((Textfield)fileCP5.getController("feature key"));
+      txt.setValue(""+concatString);  
+      //println(concatString);
+      } 
     }    
     
-    // clicking on brwoseFileGUI4 browse button button: on success displays path in textField      
+    // clicking on brwoseFileGUI4 browse button button: on success displays path in textField  CLASSIFICATION   
     if(theEvent.controller().getId()==41) {
-    String browseFile = fileChooser(0);
-    if(browseFile != null) {
-    Textfield txt = ((Textfield)fileCP5.getController("classification"));
-    txt.setValue(""+browseFile);  
-        } 
-    }   
+    String[] browseFile4 = filesChooser();
+      if(browseFile4 != null) {
+        String concatString = "";
+        for (int i = 0; i < browseFile4.length; i++) {
+          if(i!=0) {
+          concatString = concatString.concat(",");
+          }
+          concatString = concatString.concat(browseFile4[i]);
+          //println("file: "+browseFile1[i]+", concatenated String "+concatString);
+        }
+      Textfield txt = ((Textfield)fileCP5.getController("classification"));
+      txt.setValue(""+concatString);  
+      //println(concatString);
+      } 
+   }   
    
   }  
 }
 
-// function colorA will receive changes from 
-// controller with name colorA
+// Function is called if the confirm button is clicked
 public void Confirm(int theValue) {
   //println("a button event from validation Button: "+theValue);
   if(theValue==1) {
     
   // if error occurs, error flag will be set
-  boolean errorFlag = false;  
+  errorFlag = false;  
     
-  // Declarations
-  String[] featureVecInput = new String[0];  
+//  // Declarations
+//  String[] featureVecInput = new String[0];  
     
   // Storing the values in the single file fields
-  Textfield[] txts = new Textfield[3];
-  txts[0] = ((Textfield)fileCP5.getController("taxonomy"));
-  txts[1] = ((Textfield)fileCP5.getController("feature key"));
-  txts[2] = ((Textfield)fileCP5.getController("classification"));
+  Textfield TFTaxonomy = ((Textfield)fileCP5.getController("taxonomy"));
 
   // Checking for multiple entries in featureVectors field (Comma separated)
-  Textfield featureVectors = ((Textfield)fileCP5.getController("feature vectors"));
+  Textfield TFFeatureVectors = ((Textfield)fileCP5.getController("feature vectors"));
+  Textfield TFFeatureKeys =     ((Textfield)fileCP5.getController("feature key"));
+  Textfield TFClassifications = ((Textfield)fileCP5.getController("classification"));
   
-  // Split entry to get the single file paths
-  if (featureVectors!=null) {
-  //println(featureVectors);
-  featureVecInput = splitTokens(featureVectors.getText(), ",");
+  //=================
+  // Check and store the file paths for the multplie file path fields
+  //=================
+  String[] featureVectorsXML = checkMultipleFiles(TFFeatureVectors);
+  String[] featureKeyXML = checkMultipleFiles(TFFeatureKeys);
+  String[] classificationXML = checkMultipleFiles(TFClassifications);
 
-  // Cycle through Feature Vector field (possible multiple entries)
-  for (int i = 0; i < featureVecInput.length; i++) {
-    //check if file is an XML file
-    if(featureVecInput[i].endsWith(".xml")) {  
-      // check if file exists
-      File checkFile = new File(featureVecInput[i]);
-      if(!checkFile.exists()) {
-      errorFlag = true;
-      featureVectors.setText("FILE DOESN\'T EXIST!");
-      }      
-    } else {
-      errorFlag = true;
-      // Label: Only XML files!
-      featureVectors.setText("ONLY XML FILES!");
+
+  // Parse Feature Definition files
+  FeatureDefinition[][] featureDefinition = new FeatureDefinition[featureKeyXML.length][];
+  
+  for (int i = 0; i < featureKeyXML.length; i++) {
+    try {
+        featureDefinition[i] = FeatureDefinition.parseFeatureDefinitionsFile(featureKeyXML[i]); 
+    } catch (Exception e) {
+        errorFlag = true;
+        TFFeatureKeys.setText("DATA INPUT ERROR!");
+        println("...could not parse feature definitions.");
+        e.printStackTrace();
     }
   }
-  } else { 
-  // textfield was empty
-  errorFlag = true; 
-  featureVectors.setText("REQUIRED FIELD!");
+  FeatureDefinition[] mergedFeatureDefinition = new FeatureDefinition[0];
+  try {
+      mergedFeatureDefinition = FeatureDefinition.getMergedFeatureDefinitions(featureDefinition);
+  } catch (Exception e) {
+      errorFlag = true;
+      TFFeatureKeys.setText("COULDN\'T MERGE FEATURE DEFINITIONS!");
+      println("...could not merge feature definitions.");
+      e.printStackTrace();
   }
-    
-
+  
+  
+  // Parse Classification files
+  SegmentedClassification[][] segmentedClassification = new SegmentedClassification[classificationXML.length][];  
+  //int sCTotalLength = 0;
+  for (int i = 0; i < classificationXML.length; i++) {
+    try {  
+      segmentedClassification[i] = SegmentedClassification.parseClassificationsFile(classificationXML[i]);
+    } catch (Exception e) {
+      errorFlag = true;
+      TFClassifications.setText("DATA INPUT ERROR!");
+      println("...could not parse classifications.");
+      e.printStackTrace();
+    }
+  //sCTotalLength += segmentedClassification[i].length;
+  }
+  //SegmentedClassification[] mergedSegmentedClassification = new SegmentedClassification[sCTotalLength];
+  SegmentedClassification[] mergedSegmentedClassification = new SegmentedClassification[0];
+  for(int i = 0; i < segmentedClassification.length; i++) {
+     for(int j = 0; j < segmentedClassification[i].length; j++) {
+       append(mergedSegmentedClassification, segmentedClassification[i][j]);
+     }
+  }
+  if (DEBUG) {
+    println("Length of merged segmented classification: "+mergedSegmentedClassification.length);
+  }
+  if (mergedSegmentedClassification.length > 1) {
+    boolean classificationIsUnique = SegmentedClassification.verifyUniquenessOfIdentifiers(mergedSegmentedClassification);
+    if(!classificationIsUnique) {
+      errorFlag = true;
+      TFClassifications.setText("IDENTIFIERS ARE NOT UNIQUE");
+    }
+  }
+  
+  // Parse Feature Vector files
+  DataSet[] parsedSets = new DataSet[0];
+  try {
+  parsedSets = DataSet.parseDataSetFiles(featureVectorsXML, mergedFeatureDefinition);
+  } catch (Exception e) {
+      errorFlag = true;
+      TFFeatureVectors.setText("DATA INPUT ERROR!");
+      println("...could not parse feature vectors.");
+      e.printStackTrace();
+  }
+  
+  //=================
+  // Check and store the file paths for the single file path field
+  //=================
   // Instantiate File Objects
-  File[] filePaths = new File[3];
+  File taxonomyPath;
   // Cycle through single file fields
-  for (int i = 0; i < txts.length; i++) {
-    // Check if file is an XML file
-    if(txts[i].getText().endsWith(".xml")) {        
-      filePaths[i] = new File(txts[i].getText());
+
+    if(TFTaxonomy.getText().endsWith(".xml")) {        
+      taxonomyPath = new File(TFTaxonomy.getText());
       // Check if file exists
-      if(!filePaths[i].exists()) {
-      txts[i].setText("FILE DOESN\'T EXIST!");
+      if(!taxonomyPath.exists()) {
+      TFTaxonomy.setText("FILE DOESN\'T EXIST!");
       errorFlag = true;
       }
     } else {
       // Label: Only XML files!
       errorFlag = true;
-      txts[i].setText("ONLY XML FILES!");
+      TFTaxonomy.setText("ONLY XML FILES!");
     }
-  }
+    
+    // Instantiate Taxonomy Object with file path
+    String taxonomyXML = TFTaxonomy.getText();
+    try {
+    Taxonomy taxonomy = Taxonomy.parseTaxonomyFile(taxonomyXML);
+    } catch (Exception e) {
+    errorFlag = true;
+    TFTaxonomy.setText("DATA INPUT ERROR!");
+    println("...could not parse taxonomy.");
+    e.printStackTrace();
+    }
+      
+    // If no error occured during tile path testing
+    // INSTANTIATE DATABOARD
     if (!errorFlag) {
-    // Window config
-    String taxonomyXML = txts[0].getText();
-    String featureKeyXML = txts[1].getText();
-    String[] featureVectorsXML = featureVecInput;
-    String classificationXML = txts[2].getText();
-    //instantiateDataboard(taxonomyXML, featureKeyXML, featureVectorsXML, classificationXML);
-    boolean isError = dataBoard(taxonomyXML, featureKeyXML, featureVectorsXML, classificationXML);
-    println("dataBoard error: "+isError);
-    initVisualization(isError);
+      // Instantiate DataBoard and get the error boolean
+      boolean isDataBoardError = dataBoardInitWithObjects(taxonomy, mergedFeatureDefinition, parsedSets, mergedSegmentedClassification);
+      
+      // Method parsing file paths (not allowing multiple classification or feature key files)
+      // boolean isDataBoardError = dataBoard(taxonomyXML, featureKeyXML, featureVectorsXML, classificationXML);
+      
+      if (DEBUG) {
+      println("dataBoard error: "+isDataBoardError);
+      }
+      // checks if DataBoard returned an error, evokes an error handling function or initializes the visualization accordingly
+      if (isDataBoardError) {
+        dataBoardError();
+      } else {
+        initVisualization();
+      }
 
     }
       //println("errorFlag "+errorFlag);
   }
 }
 
+String[] checkMultipleFiles(Textfield tf) {
+  // Declarations
+  String[] tftemp = new String[0];  
+  // Split entry to get the single file paths
+  if (tf!=null) {
+  //println(featureVectors);
+  tftemp = splitTokens(tf.getText(), ",");
+  
+  // Cycle through Feature Vector field (possible multiple entries)
+  for (int i = 0; i < tftemp.length; i++) {
+    //check if file is an XML file
+    if(tftemp[i].endsWith(".xml")) {  
+      // check if file exists
+      File checkFile = new File(tftemp[i]);
+      if(!checkFile.exists()) {
+      errorFlag = true;
+      tf.setText("FILE DOESN\'T EXIST!");
+      }      
+    } else {
+      errorFlag = true;
+      // Label: Only XML files!
+      tf.setText("ONLY XML FILES!");
+    }
+  }
+  } else { 
+  // textfield was empty
+  errorFlag = true; 
+  tf.setText("REQUIRED FIELD!");
+  }
+  return tftemp; 
+}
+
+// handles a dataBoard Error
 void dataBoardError() {
   // TODO: only display where the error was produced
   
@@ -513,18 +645,13 @@ void dataBoardError() {
   txts[2] = ((Textfield)fileCP5.getController("classification"));
   txts[3] = ((Textfield)fileCP5.getController("feature vectors"));
   
-  for (int i = 0; i < txts.length; i++) {
-  txts[i].setText("DATA ERROR!");
+  for (Textfield txt : txts) {
+  txt.setText("DATABOARD ERROR!");
   }
 }
 
-// checks if dataBoard produced an error and calls either
-// dataBoardError() or initializes the Visualization
-void initVisualization(boolean isError) {
-    if(isError) {
-    // databoard is angry
-    dataBoardError();
-    } else {
+// Initialize the visualization
+void initVisualization() {
     // DataBoard returned all is fine
     
     // Second frame
@@ -535,40 +662,21 @@ void initVisualization(boolean isError) {
 //    frame.setLocation(displayWidth/2-round(fFrameHeight*1.2)/2, displayHeight/2-round(fFrameHeight)/2);
 //    }
 
-
     frame.setTitle("jMIR Visualization - Choose your data");
+    
+    // By setting the fadeGUIFlag, the run function calles the setupMainGUI after everything faded away
     fadeGUIFlag = true;
     //moveFileGUIFlag = true;
     
-    
-      
-//    title.hide();
-//    description.hide();
-//    confirmButton.hide();
-//    browseBang1.hide();
-//    browseField1.hide();
-//    browseLabel1.hide();
-//    browseBang2.hide();
-//    browseField2.hide();
-//    browseLabel2.hide();
-//    browseBang3.hide();
-//    browseField3.hide();
-//    browseLabel3.hide();
-//    browseBang4.hide();
-//    browseField4.hide();
-//    browseLabel4.hide();
-    
     // Launch the Preprocessor
     jMIR_preprocessor();
-    
-    }
 }
 
 void fadeGUI(boolean fadeGUIFlag_) {
   if (fadeGUIFlag_) {
     
     if (fadeGUIVal < 100) {
-      fadeGUIVal = fadeGUIVal+1;  
+      fadeGUIVal++;  
       fill(255, fadeGUIVal*2.55);
     } else {
       fadeGUIFlag = false;
@@ -576,11 +684,12 @@ void fadeGUI(boolean fadeGUIFlag_) {
       fileCP5.hide();
       // Setup the mainGUI
       setupMainGUI();
+      runGraphicsFlag = true;
     }
   }
 }
 
-void moveFileGUI(boolean moveFileGUIFlag_) {
+void moveGUI(boolean moveFileGUIFlag_) {
   if (moveFileGUIFlag_) {
     
     if (fileBrowseGUIxOffset >= (-300)) {
@@ -595,36 +704,33 @@ void moveFileGUI(boolean moveFileGUIFlag_) {
   }
 }
 
-void jMIR_GUI_run() {
-  background(0xFFFFFFFF);
-  fileCP5.draw();
-  fill(255, fadeGUIVal*2.55);
-  fadeGUI(fadeGUIFlag);
-  rect(0,0,width,height);
-  //moveFileGUI(moveFileGUIFlag);
-  
-  if (renderBGImage)
-    image(fileGUIbg, fileBrowseGUIxOffset-65, fileBrowseGUIyOffset-65);
 
-}
 
 void setupMainGUI() {
   mainGUI = new ControlP5(this);
-    
+  
+  //===============================
+  // GENERAL GUI ELEMENTS
+  //===============================
+  renderBGImage = false;
+  
   title = mainGUI.addTextlabel("jMIR visualization")
                     .setText("jMIR visualization")
                     .setPosition(10,10)
                     .setColorValue(0x00000000)
                     .setId(1)
                     ;
-                    
-  l = mainGUI.addListBox("Feature Names")
+  //===============================
+  // Listboxes
+  //===============================
+
+  l = mainGUI.addListBox("Features")
          .setPosition(10, 50)
-         .setSize(120, 120)
+         .setSize(240, 120)
          .setBarHeight(15)
          ;  
          
-  l.captionLabel().toUpperCase(true);
+  //l.captionLabel().toUpperCase(true);
   l.captionLabel().set("Feature Names");
   l.captionLabel().style().marginTop = 3;
   l.valueLabel().style().marginTop = 3; 
@@ -632,7 +738,7 @@ void setupMainGUI() {
 
     for (int i = 0; i < featureNames.length; i++) {
     ListBoxItem lbi = l.addItem(featureNames[i], i);
-    lbi.setColorBackground(0xffff0000);
+    //lbi.setColorBackground(0xffff0000);
   }
   
   int itemHeight = 15;
@@ -644,7 +750,29 @@ void setupMainGUI() {
   l.setItemHeight(10);
   itemHeight = 10;
   }
+  int lbheight = itemHeight*(featureNames.length+1);
+  if (lbheight > (height-70)) {
+  l.setHeight(height-70);
+  } else {
   l.setHeight(itemHeight*(featureNames.length+1));
-
+  }
+  //===============================
+  // Graph
+  //===============================
+  // call the graphics setup
+  jMIR_graphics();
 }
 
+
+
+
+void jMIR_GUI_run() {
+  background(0xFFFFFFFF);
+  if (renderBGImage)
+    image(fileGUIbg, fileBrowseGUIxOffset-65, fileBrowseGUIyOffset-65);
+  fileCP5.draw();
+  fill(255, fadeGUIVal*2.55);
+  fadeGUI(fadeGUIFlag);
+  rect(0,0,width,height);
+  //moveGUI(moveFileGUIFlag);
+}

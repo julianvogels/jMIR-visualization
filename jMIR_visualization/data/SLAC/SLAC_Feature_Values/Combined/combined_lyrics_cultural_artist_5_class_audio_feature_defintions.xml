@@ -1,0 +1,476 @@
+<?xml version="1.0"?>
+<!DOCTYPE feature_key_file [
+   <!ELEMENT feature_key_file (comments, feature+)>
+   <!ELEMENT comments (#PCDATA)>
+   <!ELEMENT feature (name, description?, is_sequential, parallel_dimensions)>
+   <!ELEMENT name (#PCDATA)>
+   <!ELEMENT description (#PCDATA)>
+   <!ELEMENT is_sequential (#PCDATA)>
+   <!ELEMENT parallel_dimensions (#PCDATA)>
+]>
+
+<feature_key_file>
+
+   <comments>Combined feature definitions of C:\Users\Cory\Documents\_ISMIR\Data\SLAC_Feature_Values\Combined\combined_lyrics_cultural_artist_5_class_feature_defintions.xml and C:\Users\Cory\Documents\_Dissertation\_jMIR DEMO\Experiment\Features\Audio\audio_feature_definitions.xml.</comments>
+
+   <feature>
+      <name>Average syllable count per word</name>
+      <description>Average number of syllables per word (using the Flesh algorithm)</description>
+      <is_sequential>false</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Flesh reading ease</name>
+      <description>Flesh reading ease</description>
+      <is_sequential>false</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Flesh-Kincaid grade level</name>
+      <description>Flesh-Kincaid grade level</description>
+      <is_sequential>false</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Letter-bigram components</name>
+      <description>First 20 principal components of letter bigram frequencies</description>
+      <is_sequential>false</is_sequential>
+      <parallel_dimensions>20</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Part-of-speech frequencies</name>
+      <description>Relative frequencies of 20 parts of speech (using the Stanford tagger)</description>
+      <is_sequential>false</is_sequential>
+      <parallel_dimensions>20</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Rate of misspelling</name>
+      <description>Proportion of misspelled words according to aspell's English dictionary</description>
+      <is_sequential>false</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Topic membership probabilities (24 topics)</name>
+      <description>Vocabulary size divided by word count</description>
+      <is_sequential>false</is_sequential>
+      <parallel_dimensions>24</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Contains Words</name>
+      <description>Whether or not there is at least one word consisting of non whitespace chararacters in a text. Set to 1.0 if so and to 0.0 if not.</description>
+      <is_sequential>false</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Number of Words</name>
+      <description>The total number of words in the text. This count is not of unique words, so words that occur more than once will be counted more than once. Whitespace characters are not counted as words.</description>
+      <is_sequential>false</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Number of Unique Words</name>
+      <description>The total number unique of words in the text. This means that words that occur more than once are not counted twice. Whitespace characters are not counted as words.</description>
+      <is_sequential>false</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Word Variety</name>
+      <description>The total number of words in the text divided by the number of unique words.</description>
+      <is_sequential>false</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Letters Per Word Average</name>
+      <description>The average number of characters per word. Punctuation and numerical characters are included in the count of characters for a given word. Whitespace characters are not included in calculations.</description>
+      <is_sequential>false</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Letters Per Word Variance</name>
+      <description>The variance of the number of characters per word. Punctuation and numerical characters are included in the count of characters for a given word. Whitespace characters are not included in calculations.</description>
+      <is_sequential>false</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Number of Lines</name>
+      <description>The total number of lines in the text. This count does not include lines consisting only of line breaks.</description>
+      <is_sequential>false</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Words Per Line Average</name>
+      <description>The average number of words per line. Blank lines are not included in this calculation.</description>
+      <is_sequential>false</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Words Per Line Variance</name>
+      <description>The variance of the number of words per line. Blank lines are not included in this calculation.</description>
+      <is_sequential>false</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Number of Segments</name>
+      <description>The total number of segments (e.g. verses, choruses, etc.) in the text. Segments are assumed to be segmented by blank lines, and lines are segmented by line breaks. Lines consisting only of line breaks are filtered out. This count does not include lines consisting only of line breaks.</description>
+      <is_sequential>false</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Lines Per Segment Average</name>
+      <description>The average number of lines per segments (e.g. verses, choruses, etc.) in the text. Segments are assumed to be segmented by blank lines, and lines are segmented by line breaks. Lines consisting only of line breaks are filtered out. This count does not include lines consisting only of line breaks.</description>
+      <is_sequential>false</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Lines Per Segment Variance</name>
+      <description>The variance of the number of lines per segments (e.g. verses, choruses, etc.) in the text. Segments are assumed to be segmented by blank lines, and lines are segmented by line breaks. Lines consisting only of line breaks are filtered out. This count does not include lines consisting only of line breaks.</description>
+      <is_sequential>false</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Automated Readability Index</name>
+      <description>This index is designed to provide a measure of the understandability of a text, and provides a result that is roughly equivalent to a U.S. grade level. More information is available at en.wikipedia.org/wiki/Automated_Readability_Index</description>
+      <is_sequential>false</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Word Profile Match Traditional Blues</name>
+      <description>The percentage of words in the text that are found in a list of keywords. This percentage is based on all words present in the text, not just the unique words. Case is ignored. The keywords are: ain't baby baby, blues boy child child, evil gonna hot lord, love mojo oh old red tamales working worried yeah.</description>
+      <is_sequential>false</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Word Profile Match Modern Blues</name>
+      <description>The percentage of words in the text that are found in a list of keywords. This percentage is based on all words present in the text, not just the unique words. Case is ignored. The keywords are: 'cause ain't baby baby, bad blues down feel gonna little lord love shame wanna woman wrong yeah yeah,.</description>
+      <is_sequential>false</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Word Profile Match Classical</name>
+      <description>The percentage of words in the text that are found in a list of keywords. This percentage is based on all words present in the text, not just the unique words. Case is ignored. The keywords are: auf bist dein dich die dies du dum et finde gott herz ich ihn ist la le mein mi mir nach nicht thy und.</description>
+      <is_sequential>false</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Word Profile Match Jazz</name>
+      <description>The percentage of words in the text that are found in a list of keywords. This percentage is based on all words present in the text, not just the unique words. Case is ignored. The keywords are: ain't baby blue cheek good heart love never please right.</description>
+      <is_sequential>false</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Word Profile Match Rap</name>
+      <description>The percentage of words in the text that are found in a list of keywords. This percentage is based on all words present in the text, not just the unique words. Case is ignored. The keywords are: 'em ain't ass bitch cuz fuck gonna gotta hit like money nigga niggas niggaz shit wanna wit y'all ya yeah yo.</description>
+      <is_sequential>false</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Word Profile Match Metal</name>
+      <description>The percentage of words in the text that are found in a list of keywords. This percentage is based on all words present in the text, not just the unique words. Case is ignored. The keywords are: 'cause ain't anger battery bleed blood dead death die end eyes fear fire god gonna hate heaven's human kill lie life night oh ooh shoot tick world yeah yeah!.</description>
+      <is_sequential>false</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Blues_websearch</name>
+      <description>The secondary search string.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Classical_websearch</name>
+      <description>The secondary search string.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Jazz_websearch</name>
+      <description>The secondary search string.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Rap_websearch</name>
+      <description>The secondary search string.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Rock_websearch</name>
+      <description>The secondary search string.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Blues_lastfm</name>
+      <description>The secondary search string.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Classical_lastfm</name>
+      <description>The secondary search string.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Jazz_lastfm</name>
+      <description>The secondary search string.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Rap_lastfm</name>
+      <description>The secondary search string.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Rock_lastfm</name>
+      <description>The secondary search string.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Spectral Centroid Overall Standard Deviation</name>
+      <description>The centre of mass of the power spectrum.
+This is the overall standard deviation over all windows.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Spectral Rolloff Point Overall Standard Deviation</name>
+      <description>The fraction of bins in the power spectrum at which 85% of the power is at lower frequencies. This is a measure of the right-skewedness of the power spectrum.
+This is the overall standard deviation over all windows.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Spectral Flux Overall Standard Deviation</name>
+      <description>A measure of the amount of spectral change in a signal. Found by calculating the change in the magnitude spectrum from frame to frame.
+This is the overall standard deviation over all windows.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Compactness Overall Standard Deviation</name>
+      <description>A measure of the noisiness of a signal. Found by comparing the components of a window's magnitude spectrum with the magnitude spectrum of its neighbouring windows.
+This is the overall standard deviation over all windows.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Spectral Variability Overall Standard Deviation</name>
+      <description>The standard deviation of the magnitude spectrum. This is a measure of the variance of a signal's magnitude spectrum.
+This is the overall standard deviation over all windows.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Root Mean Square Overall Standard Deviation</name>
+      <description>A measure of the power of a signal.
+This is the overall standard deviation over all windows.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Fraction Of Low Energy Windows Overall Standard Deviation</name>
+      <description>The fraction of the last 100 windows that has an RMS less than the mean RMS in the last 100 windows. This can indicate how much of a signal is quiet relative to the rest of the signal.
+This is the overall standard deviation over all windows.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Zero Crossings Overall Standard Deviation</name>
+      <description>The number of times the waveform changed sign. An indication of frequency as well as noisiness.
+This is the overall standard deviation over all windows.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Strongest Beat Overall Standard Deviation</name>
+      <description>The strongest beat in a signal, in beats per minute, found by finding the strongest bin in the beat histogram.
+This is the overall standard deviation over all windows.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Beat Sum Overall Standard Deviation</name>
+      <description>The sum of all entries in the beat histogram. This is a good measure of the importance of regular beats in a signal.
+This is the overall standard deviation over all windows.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Strength Of Strongest Beat Overall Standard Deviation</name>
+      <description>How strong the strongest beat in the beat histogram is compared to other potential beats.
+This is the overall standard deviation over all windows.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Method of Moments Overall Standard Deviation</name>
+      <description>Statistical Method of Moments of the Magnitude Spectrum.
+This is the overall standard deviation over all windows.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>5</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Relative Difference Function Overall Standard Deviation</name>
+      <description>log of the derivative of RMS.  Used for onset detection.
+This is the overall standard deviation over all windows.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Spectral Centroid Overall Average</name>
+      <description>The centre of mass of the power spectrum.
+This is the overall average over all windows.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Spectral Rolloff Point Overall Average</name>
+      <description>The fraction of bins in the power spectrum at which 85% of the power is at lower frequencies. This is a measure of the right-skewedness of the power spectrum.
+This is the overall average over all windows.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Spectral Flux Overall Average</name>
+      <description>A measure of the amount of spectral change in a signal. Found by calculating the change in the magnitude spectrum from frame to frame.
+This is the overall average over all windows.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Compactness Overall Average</name>
+      <description>A measure of the noisiness of a signal. Found by comparing the components of a window's magnitude spectrum with the magnitude spectrum of its neighbouring windows.
+This is the overall average over all windows.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Spectral Variability Overall Average</name>
+      <description>The standard deviation of the magnitude spectrum. This is a measure of the variance of a signal's magnitude spectrum.
+This is the overall average over all windows.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Root Mean Square Overall Average</name>
+      <description>A measure of the power of a signal.
+This is the overall average over all windows.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Fraction Of Low Energy Windows Overall Average</name>
+      <description>The fraction of the last 100 windows that has an RMS less than the mean RMS in the last 100 windows. This can indicate how much of a signal is quiet relative to the rest of the signal.
+This is the overall average over all windows.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Zero Crossings Overall Average</name>
+      <description>The number of times the waveform changed sign. An indication of frequency as well as noisiness.
+This is the overall average over all windows.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Strongest Beat Overall Average</name>
+      <description>The strongest beat in a signal, in beats per minute, found by finding the strongest bin in the beat histogram.
+This is the overall average over all windows.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Beat Sum Overall Average</name>
+      <description>The sum of all entries in the beat histogram. This is a good measure of the importance of regular beats in a signal.
+This is the overall average over all windows.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Strength Of Strongest Beat Overall Average</name>
+      <description>How strong the strongest beat in the beat histogram is compared to other potential beats.
+This is the overall average over all windows.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Method of Moments Overall Average</name>
+      <description>Statistical Method of Moments of the Magnitude Spectrum.
+This is the overall average over all windows.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>5</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Relative Difference Function Overall Average</name>
+      <description>log of the derivative of RMS.  Used for onset detection.
+This is the overall average over all windows.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+</feature_key_file>

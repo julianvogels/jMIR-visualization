@@ -8,6 +8,7 @@
 *  Benjamin Bacon (benjamin.bacon@mail.mcgill.ca)
 */
 
+boolean runGraphicsFlag = false;
 
 void jMIR_graphics() {
 

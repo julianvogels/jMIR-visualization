@@ -14,7 +14,7 @@ import ace.*;
 import ace.gui.*;
 
 // Declaration of the DataBoard class (jMIR library)
-DataBoard dataBoard;
+ArrayList<DataBoard> dataBoard = new ArrayList<DataBoard>();
 
 void jMIR_connect() {
   // get the FeatureVectors folder path
@@ -60,7 +60,22 @@ void jMIR_connect() {
 boolean dataBoard(String taxonomyXML, String featureKeyXML, String[] featureVectorsXML, String classificationXML) {
 // Instantiate DataBoard
   try {
-    dataBoard = new DataBoard(taxonomyXML, featureKeyXML, featureVectorsXML, classificationXML);
+    dataBoard.add( new DataBoard(taxonomyXML, featureKeyXML, featureVectorsXML, classificationXML) );
+
+    // call the data preprocessor setup
+    return false;
+  } catch (Exception e) {
+    print("Error creating DataBoard instance. Did you install the dependancies properly? \nError: ");
+    e.printStackTrace();
+    return true;
+  }
+}
+
+boolean dataBoardInitWithObjects(Taxonomy taxonomy, FeatureDefinition[] mergedFeatureDefinition, DataSet[] parsedSets, SegmentedClassification[] mergedSegmentedClassification) {
+// Instantiate DataBoard
+  try {
+    dataBoard.add( new DataBoard(taxonomy, mergedFeatureDefinition, parsedSets, mergedSegmentedClassification) );
+
     // call the data preprocessor setup
     return false;
   } catch (Exception e) {

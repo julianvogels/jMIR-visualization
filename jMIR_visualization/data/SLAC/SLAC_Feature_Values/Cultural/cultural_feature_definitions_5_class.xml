@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<!DOCTYPE feature_key_file [
+   <!ELEMENT feature_key_file (comments, feature+)>
+   <!ELEMENT comments (#PCDATA)>
+   <!ELEMENT feature (name, description?, is_sequential, parallel_dimensions)>
+   <!ELEMENT name (#PCDATA)>
+   <!ELEMENT description (#PCDATA)>
+   <!ELEMENT is_sequential (#PCDATA)>
+   <!ELEMENT parallel_dimensions (#PCDATA)>
+]>
+
+<feature_key_file>
+
+   <comments>Feature definitions for the 5 class cultural feature extraction.</comments>
+
+   <feature>
+      <name>Blues_websearch</name>
+      <description>The secondary search string.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Classical_websearch</name>
+      <description>The secondary search string.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Jazz_websearch</name>
+      <description>The secondary search string.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Rap_websearch</name>
+      <description>The secondary search string.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Rock_websearch</name>
+      <description>The secondary search string.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Blues_lastfm</name>
+      <description>The secondary search string.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Classical_lastfm</name>
+      <description>The secondary search string.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Jazz_lastfm</name>
+      <description>The secondary search string.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Rap_lastfm</name>
+      <description>The secondary search string.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Rock_lastfm</name>
+      <description>The secondary search string.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+</feature_key_file>

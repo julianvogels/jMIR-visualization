@@ -1,0 +1,135 @@
+<?xml version="1.0"?>
+<!DOCTYPE feature_key_file [
+   <!ELEMENT feature_key_file (comments, feature+)>
+   <!ELEMENT comments (#PCDATA)>
+   <!ELEMENT feature (name, description?, is_sequential, parallel_dimensions)>
+   <!ELEMENT name (#PCDATA)>
+   <!ELEMENT description (#PCDATA)>
+   <!ELEMENT is_sequential (#PCDATA)>
+   <!ELEMENT parallel_dimensions (#PCDATA)>
+]>
+
+<feature_key_file>
+
+   <comments>Feature definitions for jLyrics.</comments>
+
+   <feature>
+      <name>Word count</name>
+      <description>Total number of words available</description>
+      <is_sequential>false</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Function word frequencies</name>
+      <description>Frequencies of function words in the text</description>
+      <is_sequential>false</is_sequential>
+      <parallel_dimensions>50</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Average word length</name>
+      <description>Average word length</description>
+      <is_sequential>false</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Letter frequencies</name>
+      <description>Relative frequencies of each letter</description>
+      <is_sequential>false</is_sequential>
+      <parallel_dimensions>26</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Punctuation frequencies</name>
+      <description>Frequencies of punctuation marks per word</description>
+      <is_sequential>false</is_sequential>
+      <parallel_dimensions>32</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Vocabulary size</name>
+      <description>Number of unique words</description>
+      <is_sequential>false</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Vocabulary richness</name>
+      <description>Vocabulary size divided by word count</description>
+      <is_sequential>false</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Flesh-Kincaid grade level</name>
+      <description>Flesh-Kincaid grade level</description>
+      <is_sequential>false</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Flesh reading ease</name>
+      <description>Flesh reading ease</description>
+      <is_sequential>false</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Sentence count</name>
+      <description>Number of sentences</description>
+      <is_sequential>false</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Average syllable count per word</name>
+      <description>Average number of syllables per word (using the Flesh algorithm)</description>
+      <is_sequential>false</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Average sentence length</name>
+      <description>Average word count per sentence</description>
+      <is_sequential>false</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Rate of misspelling</name>
+      <description>Proportion of misspelled words according to aspell's English dictionary</description>
+      <is_sequential>false</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Part-of-speech frequencies</name>
+      <description>Relative frequencies of 20 parts of speech (using the Stanford tagger)</description>
+      <is_sequential>false</is_sequential>
+      <parallel_dimensions>20</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Letter-bigram components</name>
+      <description>First 20 principal components of letter bigram frequencies</description>
+      <is_sequential>false</is_sequential>
+      <parallel_dimensions>20</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Topic membership probabilities (10 topics)</name>
+      <description>Posterior probability of membership in each of 10 topics fit to SLAC and Codaich</description>
+      <is_sequential>false</is_sequential>
+      <parallel_dimensions>10</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Topic membership probabilities (24 topics)</name>
+      <description>Vocabulary size divided by word count</description>
+      <is_sequential>false</is_sequential>
+      <parallel_dimensions>24</parallel_dimensions>
+   </feature>
+
+</feature_key_file>

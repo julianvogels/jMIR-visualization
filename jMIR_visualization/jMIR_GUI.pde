@@ -261,7 +261,7 @@ void jMIR_GUI() {
   if (DEBUG) {
     if(DEBUG_SET_CHOICE == 1) {
     Textfield txt1 = ((Textfield)fileCP5.getController("feature vectors"));
-    txt1.setValue("/Volumes/Data HD/Users/Julian/Documents/Processing/jMIR-visualization/jMIR_visualization/data/SLAC/SLAC_Feature_Values/Combined/combined_cultural_artist_10_class_audio_feature_values.xml, /Volumes/Data HD/Users/Julian/Documents/Processing/jMIR-visualization/jMIR_visualization/data/SLAC/SLAC_Feature_Values/Combined/combined_cultural_artist_10_class_symbolic_feature_values.xml");  
+    txt1.setValue("/Volumes/Data HD/Users/Julian/Documents/Processing/jMIR-visualization/jMIR_visualization/data/SLAC/SLAC_Feature_Values/Combined/combined_cultural_artist_10_class_audio_feature_values.xml,/Volumes/Data HD/Users/Julian/Documents/Processing/jMIR-visualization/jMIR_visualization/data/SLAC/SLAC_Feature_Values/Combined/combined_cultural_artist_10_class_symbolic_feature_values.xml");  
     Textfield txt2 = ((Textfield)fileCP5.getController("feature key"));
     txt2.setValue("/Volumes/Data HD/Users/Julian/Documents/Processing/jMIR-visualization/jMIR_visualization/data/SLAC/SLAC_Feature_Values/Combined/combined_cultural_artist_10_class_symbolic_audio_feature_defintions.xml");  
     Textfield txt3 = ((Textfield)fileCP5.getController("taxonomy"));
@@ -672,37 +672,7 @@ void initVisualization() {
     jMIR_preprocessor();
 }
 
-void fadeGUI(boolean fadeGUIFlag_) {
-  if (fadeGUIFlag_) {
-    
-    if (fadeGUIVal < 100) {
-      fadeGUIVal++;  
-      fill(255, fadeGUIVal*2.55);
-    } else {
-      fadeGUIFlag = false;
-      fadeGUIVal = 0; 
-      fileCP5.hide();
-      // Setup the mainGUI
-      setupMainGUI();
-      runGraphicsFlag = true;
-    }
-  }
-}
 
-void moveGUI(boolean moveFileGUIFlag_) {
-  if (moveFileGUIFlag_) {
-    
-    if (fileBrowseGUIxOffset >= (-300)) {
-      fileBrowseGUIxOffset = fileBrowseGUIxOffset-2; 
-//      PVector titlevec = title.getPosition();
-//      titlevec.x = titlevec.x-2; 
-//      title.setPosition(titlevec);
-      println(title.getAbsolutePosition());
-    } else {
-      moveFileGUIFlag = false;
-    }
-  }
-}
 
 
 
@@ -763,9 +733,9 @@ void setupMainGUI() {
   jMIR_graphics();
 }
 
-
-
-
+//===============================
+// Run function is executed at every iteration of the processing cycle
+//===============================
 void jMIR_GUI_run() {
   background(0xFFFFFFFF);
   if (renderBGImage)
@@ -775,4 +745,36 @@ void jMIR_GUI_run() {
   fadeGUI(fadeGUIFlag);
   rect(0,0,width,height);
   //moveGUI(moveFileGUIFlag);
+}
+
+void fadeGUI(boolean fadeGUIFlag_) {
+  if (fadeGUIFlag_) {
+    
+    if (fadeGUIVal < 100) {
+      fadeGUIVal++;  
+      fill(255, fadeGUIVal*2.55);
+    } else {
+      fadeGUIFlag = false;
+      fadeGUIVal = 0; 
+      fileCP5.hide();
+      // Setup the mainGUI
+      setupMainGUI();
+      runGraphicsFlag = true;
+    }
+  }
+}
+
+void moveGUI(boolean moveFileGUIFlag_) {
+  if (moveFileGUIFlag_) {
+    
+    if (fileBrowseGUIxOffset >= (-300)) {
+      fileBrowseGUIxOffset = fileBrowseGUIxOffset-2; 
+//      PVector titlevec = title.getPosition();
+//      titlevec.x = titlevec.x-2; 
+//      title.setPosition(titlevec);
+      println(title.getAbsolutePosition());
+    } else {
+      moveFileGUIFlag = false;
+    }
+  }
 }

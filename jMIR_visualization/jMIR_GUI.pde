@@ -76,17 +76,18 @@ PImage fileGUIbg;
 // ---------------------------
 // File path check
 boolean errorFlag = false;
-
-// picture fade
+// FileGUI fade
 boolean fadeGUIFlag = false;
 int fadeGUIVal = 0;
 // GUI move
 boolean moveFileGUIFlag = false;
-
+// Display background image?
 boolean renderBGImage = true;
 
+
+
+
 void jMIR_GUI() {
-  
   smooth();
   
   // adjust window position
@@ -360,6 +361,7 @@ String[] filesChooser() {
   return filePath;
 }
 
+// DEPRECATED
 FileSet openFiles() {
   //Create a FileSet, containing the file paths to the XML documents
   FileSet fileSet = new FileSet();
@@ -376,9 +378,6 @@ FileSet openFiles() {
   }
 }
 
-void fileSaver() {
-
-}
 
 void controlEvent(ControlEvent theEvent) {
   
@@ -569,8 +568,10 @@ public void Confirm(int theValue) {
     
     // Instantiate Taxonomy Object with file path
     String taxonomyXML = TFTaxonomy.getText();
+    Taxonomy taxonomy = new Taxonomy();
     try {
-    Taxonomy taxonomy = Taxonomy.parseTaxonomyFile(taxonomyXML);
+    taxonomy = Taxonomy.parseTaxonomyFile(taxonomyXML);
+    println("Taxonomy tree: "+taxonomy.getFormattedTreeStructure());
     } catch (Exception e) {
     errorFlag = true;
     TFTaxonomy.setText("DATA INPUT ERROR!");
@@ -582,14 +583,11 @@ public void Confirm(int theValue) {
     // INSTANTIATE DATABOARD
     if (!errorFlag) {
       // Instantiate DataBoard and get the error boolean
-      boolean isDataBoardError = dataBoardInitWithObjects(taxonomy, mergedFeatureDefinition, parsedSets, mergedSegmentedClassification);
+      boolean isDataBoardError = dataBoardInitWithObjects(null, mergedFeatureDefinition, parsedSets, mergedSegmentedClassification);
       
       // Method parsing file paths (not allowing multiple classification or feature key files)
       // boolean isDataBoardError = dataBoard(taxonomyXML, featureKeyXML, featureVectorsXML, classificationXML);
-      
-      if (DEBUG) {
-      println("dataBoard error: "+isDataBoardError);
-      }
+
       // checks if DataBoard returned an error, evokes an error handling function or initializes the visualization accordingly
       if (isDataBoardError) {
         dataBoardError();
@@ -636,8 +634,6 @@ String[] checkMultipleFiles(Textfield tf) {
 
 // handles a dataBoard Error
 void dataBoardError() {
-  // TODO: only display where the error was produced
-  
   // Storing the values in the single file fields
   Textfield[] txts = new Textfield[4];
   txts[0] = ((Textfield)fileCP5.getController("taxonomy"));

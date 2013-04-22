@@ -9,11 +9,12 @@
  */
 
 String[] featureNames;
-FeatureDefinition[] featureDefinition;
-DataSet[] datasets;
-Taxonomy taxonomy;
+FeatureDefinition[] pPfeatureDefinition;
+DataSet[] pPdatasets;
+Taxonomy pPtaxonomy;
 
-String[][] featureValuesTopLevel;
+String[][][] featureValuesTopLevel;
+String[][][][] featureValuesSubLevels;
 
 void jMIR_preprocessor() {
 
@@ -25,48 +26,52 @@ void jMIR_preprocessor() {
   }
   println();
 
-  featureDefinition = dataBoard.get(0).getFeatureDefinitions();
+  pPfeatureDefinition = dataBoard.get(0).getFeatureDefinitions();
   //println("Feature Description: ");
-  for (int i = 0; i < featureDefinition.length; i++) {
+  for (int i = 0; i < pPfeatureDefinition.length; i++) {
    // println(featureDefinition[i].getFeatureDescription());
   }
   println();
 
-  datasets = dataBoard.get(0).getFeatureVectors();
-  int columns = datasets.length;
-  int rows = 0;
-  for (int i = 0; i < datasets.length; i++) {
-    // check for the row length maximum
-    if (datasets[i].getFeatureValuesOfTopLevel(featureDefinition).length > rows) {
-      rows = datasets[i].getFeatureValuesOfTopLevel(featureDefinition).length;
-      println("rows : "+rows);
-    }
+  // TopLeveLFeatures and SubLevelFeatures
+  pPdatasets = dataBoard.get(0).getFeatureVectors();
+  featureValuesTopLevel  =  new String[pPdatasets.length][][];
+  featureValuesSubLevels =  new String[pPdatasets.length][][][]; 
+    for (int i = 0; i < pPdatasets.length; i++) {
+    featureValuesTopLevel[i]  = pPdatasets[i].getFeatureValuesOfTopLevel(pPfeatureDefinition);
+    featureValuesSubLevels[i] = pPdatasets[i].getFeatureValuesOfSubSections(pPfeatureDefinition);
   }
-  featureValuesTopLevel = new String[columns][rows]; 
-  for (int i = 0; i < columns; i++) {
-    //println("Dataset Description: \n\n"+datasets[i].getDataSetDescription(i));
-    //for (int j = 0; j < rows; j++) {
-    // MISTAKE!!!!!!!! FIX THAT
-    featureValuesTopLevel = datasets[i].getFeatureValuesOfTopLevel(featureDefinition);
-    //}
-  }
-//  for (int i = 0; i < columns; i++) {
-//      for (int j = 0; j < rows; j++) {
-//      // MISTAKE!!!!!!!! FIX THAT
-//      println(featureValuesTopLevel[i][j]);
-//      }
-//  }
   
   for (int j = 0; j < featureValuesTopLevel.length; j++) {
+    println("\nDataset Top Level Feature Values ["+j+"]: ");
+    if (featureValuesTopLevel[j] != null) {
     for (int k = 0; k < featureValuesTopLevel[j].length; k++) {
-      println("Dataset feature values: \n\n"+featureValuesTopLevel[j][k]);
-    }      
-    //println("Dataset feature values: \n\n"+datasets[i].getFeatureValuesOfSubSections(featureDefinition));
+      for (int l = 0; l < featureValuesTopLevel[j][k].length; l++) {
+        println("["+j+"]["+k+"]["+l+"]: "+featureValuesTopLevel[j][k][l]);
+      }       
+    }
+    } else {println("print: is null");}    
   }
   println();
+  
+  for (int j = 0; j < featureValuesSubLevels.length; j++) {
+    println("\nDataset Sub Levels Feature Values ["+j+"]: ");
+    if (featureValuesSubLevels[j] != null) {
+    for (int k = 0; k < featureValuesSubLevels[j].length; k++) {
+      if (featureValuesSubLevels[j][k] != null) {
+      for (int l = 0; l < featureValuesSubLevels[j][k].length; l++) {
+        if (featureValuesSubLevels[j][k][l] != null) {
+        for (int m = 0; m < featureValuesSubLevels[j][k][l].length; m++) {
+          println("["+j+"]["+k+"]["+l+"]["+m+"]: "+featureValuesSubLevels[j][k][l][m]);
+        }
+        } else {println("print: is null");}
+      }
+      } else {println("print: is null");}    
+    }  
+    } else {println("print: is null");}   
+  }
 
-
-  taxonomy = dataBoard.get(0).getTaxonomy();
-  //println("Taxonomy Structure: \n\n"+taxonomy.getFormattedTreeStructure());
+  pPtaxonomy = dataBoard.get(0).getTaxonomy();
+  //println("Taxonomy Structure: \n\n"+pPtaxonomy.getFormattedTreeStructure());
 }
 

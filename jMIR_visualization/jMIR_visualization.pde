@@ -21,7 +21,9 @@ int DEBUG_SET_CHOICE = 1;
 
 void setup() {
   size(frameWidth, frameHeight, P2D); 
-  
+  if (frame != null) {
+    frame.setResizable(true);
+  }
   // call the jMIR connection setup
   jMIR_connect();
   

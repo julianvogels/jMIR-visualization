@@ -64,7 +64,8 @@ int fileBrowseGUIxOffset;
 
 // MainGUI
 // ---------------------------
-ListBox l;
+ListBox lDatasets;
+ListBox lFeatures;
 
 // GUI Groups
 //Group g1;
@@ -429,9 +430,9 @@ void controlEvent(ControlEvent theEvent) {
       txt.setValue(""+concatString);  
       //println(concatString);
       } 
-    }    
+    }
     
-    // clicking on brwoseFileGUI4 browse button button: on success displays path in textField  CLASSIFICATION   
+    // Cicking on brwoseFileGUI4 browse button buttonon success displays path in textField  CLASSIFICATION   
     if(theEvent.controller().getId()==41) {
     String[] browseFile4 = filesChooser();
       if(browseFile4 != null) {
@@ -447,9 +448,81 @@ void controlEvent(ControlEvent theEvent) {
       txt.setValue(""+concatString);  
       //println(concatString);
       } 
-   }   
-   
+     } 
   }  
+  
+  // ListBoxItem is clicked
+  if (theEvent.isGroup()) {
+    //println(theEvent.group().value()+" from "+theEvent.group());
+    ListBox l = (ListBox) theEvent.group();
+    //println(l.getName());
+    //println(l.getId());
+    int index = (int)theEvent.group().value();
+    ListBoxItem lbi = l.getItem(index);
+    CColor lbiColor = lbi.getColor();
+    //print(lbiColor.getBackground());
+    if(lbiColor.getBackground() == (-16777216)) {
+      // selected
+      // Datasets
+      if (l.getId() == 101) {
+       selectDataset(lbi, index, true);
+      } 
+      // Features
+      else if (l.getId() == 102) {
+        selectFeature(lbi, index, true);
+      }
+    } else {
+      // deselected  
+      // Datasets
+      if (l.getId() == 101) {
+       selectDataset(lbi, index, false);
+      } 
+      // Features 
+      else if (l.getId() == 102) {
+       selectFeature(lbi, index, false);
+      }
+      
+    }
+    //printDatasets();
+//    updateGraph();
+  }    
+  
+  }  
+
+// Add/Remove the dataset corrensponding to the selected ListBoxItem
+void selectDataset(ListBoxItem lbi, int index, boolean selection) {
+  // selected
+  if (selection) {
+    if (DEBUG) {
+      println("User Action: Selected Dataset \""+pPdatasets[index].identifier+"\"");
+    }
+    selectedDatasets.add(pPdatasets[index]);
+    lbi.setColorBackground(0xffff0000);
+  } 
+  // deselected
+  else {
+   if (DEBUG) {
+      println("User Action: Deselected Dataset \""+pPdatasets[index].identifier+"\"");
+    }
+    selectedDatasets.remove(pPdatasets[index]);
+    lbi.setColorBackground(0x00336600);
+  }
+}
+
+void selectFeature(ListBoxItem lbi, int index, boolean selection) {
+  if (selection) {
+    if (DEBUG) {
+      println("User Action: Selected Feature \""+featureNames[index]+"\"");
+    }
+    selectedFeatures.add(featureNames[index]);
+    lbi.setColorBackground(0xffff0000);
+  } else {
+   if (DEBUG) {
+      println("User Action: Deselected Feature \""+featureNames[index]+"\"");
+    }
+    selectedFeatures.remove(featureNames[index]);
+    lbi.setColorBackground(0x00336600);
+  }
 }
 
 // Function is called if the confirm button is clicked
@@ -649,14 +722,6 @@ void dataBoardError() {
 // Initialize the visualization
 void initVisualization() {
     // DataBoard returned all is fine
-    
-    // Second frame
-    //cf = addControlFrame("Data Visualization Panel", 960, 800);
-//    while (fFrameHeight <= 960) {
-//    fFrameHeight *= 1.05;
-//    frame.setSize(round(fFrameHeight*1.2), round(fFrameHeight));
-//    frame.setLocation(displayWidth/2-round(fFrameHeight*1.2)/2, displayHeight/2-round(fFrameHeight)/2);
-//    }
 
     frame.setTitle("jMIR Visualization - Choose your data");
     
@@ -685,43 +750,106 @@ void setupMainGUI() {
                     .setPosition(10,10)
                     .setColorValue(0x00000000)
                     .setId(1)
+                    .moveTo("global");
                     ;
   //===============================
   // Listboxes
   //===============================
 
-  l = mainGUI.addListBox("Features")
+  lDatasets = mainGUI.addListBox("Datasets")
          .setPosition(10, 50)
          .setSize(240, 120)
          .setBarHeight(15)
+         .setId(101)
+         .moveTo("global");
          ;  
          
-  //l.captionLabel().toUpperCase(true);
-  l.captionLabel().set("Feature Names");
-  l.captionLabel().style().marginTop = 3;
-  l.valueLabel().style().marginTop = 3; 
+  //lDatasets.captionLabel().toUpperCase(true);
+  lDatasets.captionLabel().set("Datasets");
+  lDatasets.captionLabel().style().marginTop = 3;
+  lDatasets.valueLabel().style().marginTop = 3; 
+
+    for (int i = 0; i < pPdatasets.length; i++) {
+    ListBoxItem lbiDatasets = lDatasets.addItem(pPdatasets[i].identifier, i);
+    lbiDatasets.toUpperCase(false);
+    lbiDatasets.setColorBackground(0x00336600);
+  }
+  
+  int lDatasetsItemHeight;
+  
+  if(pPdatasets.length < 10) {  
+    lDatasetsItemHeight = 20;
+    lDatasets.setItemHeight(lDatasetsItemHeight);
+  } else {
+    lDatasetsItemHeight = 15;
+    lDatasets.setItemHeight(lDatasetsItemHeight);
+  }
+  int lDatasetsHeight = lDatasetsItemHeight*(pPdatasets.length+1);
+  if (lDatasetsHeight > (height/2-40)) {
+    lDatasetsHeight = height/2-40;
+    lDatasets.setHeight(lDatasetsHeight);
+  } else {
+    lDatasets.setHeight(lDatasetsHeight);
+  }
+    
+  lFeatures = mainGUI.addListBox("Features")
+         .setPosition(10, 50+lDatasetsHeight+30)
+         .setSize(240, 120)
+         .setBarHeight(15)
+         .setId(102)
+         .moveTo("global");
+         ;  
+         
+  //lFeatures.captionLabel().toUpperCase(true);
+  lFeatures.captionLabel().set("Features");
+  lFeatures.captionLabel().style().marginTop = 3;
+  lFeatures.valueLabel().style().marginTop = 3; 
 
 
     for (int i = 0; i < featureNames.length; i++) {
-    ListBoxItem lbi = l.addItem(featureNames[i], i);
-    //lbi.setColorBackground(0xffff0000);
+    ListBoxItem lbiFeatures = lFeatures.addItem(featureNames[i], i);
+    lbiFeatures.toUpperCase(false);
+    lbiFeatures.setColorBackground(0x00336600);
   }
   
-  int itemHeight = 15;
+  int lFeaturesItemHeight;
   
-  if(featureNames.length < 20) {
-  l.setItemHeight(15);
-  itemHeight = 15;
+  if(featureNames.length < 10) {
+    lFeaturesItemHeight = 20;
+    lFeatures.setItemHeight(lFeaturesItemHeight);
   } else {
-  l.setItemHeight(10);
-  itemHeight = 10;
+    lFeaturesItemHeight = 15;
+    lFeatures.setItemHeight(lFeaturesItemHeight);
   }
-  int lbheight = itemHeight*(featureNames.length+1);
-  if (lbheight > (height-70)) {
-  l.setHeight(height-70);
+  int lFeaturesHeight = lFeaturesItemHeight*(featureNames.length+1);
+  if (lFeaturesHeight > (height/2-50)) {
+    lFeatures.setHeight(height/2-50);
   } else {
-  l.setHeight(itemHeight*(featureNames.length+1));
+    lFeatures.setHeight(lFeaturesItemHeight*(featureNames.length+1));
   }
+  
+  //===============================
+  // Tabs
+  //===============================
+    mainGUI.addTab("PieChart");
+     
+    mainGUI.getTab("default")
+     .activateEvent(true)
+     .setLabel("BarGraph")
+     .setId(1)
+     ;
+
+    mainGUI.getTab("PieChart")
+     .activateEvent(true)
+     .setId(2)
+     ;  
+     
+   mainGUI.window().setPositionOfTabs(260, 33);
+   
+    
+//    //mainGUI.getController("jMIR Visualization").moveTo("global");
+//    mainGUI.getController("Datasets").moveTo("global"); 
+//    mainGUI.getController("Features").moveTo("global");
   //===============================
   // Graph
   //===============================

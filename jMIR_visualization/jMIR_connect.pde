@@ -1,7 +1,7 @@
 /*
 *  jMIR-visualization application
 *  ACE XML Parser
-*  Passes file paths to the DataBoard instance.
+*  Passes file paths to the DataBoard instance (if GUI is not used).
 *
 *  Authors:
 *  Julian Vogels (julian.vogels@mail.mcgill.ca)
@@ -16,6 +16,7 @@ import ace.gui.*;
 // Declaration of the DataBoard class (jMIR library)
 ArrayList<DataBoard> dataBoard = new ArrayList<DataBoard>();
 
+// pretty mutch DEPRECATED | TODO either delete or update
 void jMIR_connect() {
   // get the FeatureVectors folder path
   java.io.File folder = new java.io.File(dataPath("")+"/FeatureVectors/");

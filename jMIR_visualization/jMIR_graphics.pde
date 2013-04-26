@@ -22,12 +22,12 @@ boolean jMIR_graphics_run = false;
 
 float chartXPos = 260;
 float chartYPos = 65;
-float chartHeight = 550;
+float chartHeight = 350;
 float chartWidth = 690;
-float sectionSpacing = 30;
+float sectionSpacing = 60;
 
 void jMIR_graphics() {
-  
+
 
 }
 
@@ -43,6 +43,8 @@ class DataDisplay {
   float groupPosY;
   static final float BAR_SPACING = 1;
   float maxFeatureVal = 0; 
+  
+  Label[] bangArray;
    
   DataDisplay(DataSet dataset_, ArrayList<String> features_, ArrayList<ArrayList<Double>> featureVals_) {
     // setup function
@@ -59,19 +61,35 @@ class DataDisplay {
       for (int value = 0; value < featureVals.get(feature).size(); value++) {
         // draws a bar graph
         // TODO change first argument to support drawing bars at same position, change last argument to change opacity accordingly
-        drawBar(groupPosX+feature*(barWidth+BAR_SPACING), groupPosY+chartHeight, barWidth-BAR_SPACING, -map(featureVals.get(feature).get(value).floatValue(), 0.0, maxFeatureVal, 0.0, chartHeight), 255 );
+        drawBar(feature, features.get(feature), groupPosX+feature*(barWidth+BAR_SPACING), groupPosY+chartHeight, barWidth-BAR_SPACING, -map(featureVals.get(feature).get(value).floatValue(), 0.0, maxFeatureVal, 0.0, chartHeight), 255, 0xff003366);
       }
     }
     
   }
   
-  void drawBar(float x, float y, float w, float h, float opacity) {
+  void drawBar(int id, String name, float x, float y, float w, float h, float opacity, int colour) {
     //println("drawBar called with values: "+x+", "+y+", "+w+", "+h);
     // TODO implement opacity  
-    fill(2, 52, 77, opacity);
-    stroke(255, 0);
-    rect(x, y, w, h);
+//    fill(2, 52, 77, opacity);
+//    stroke(255, 0);
+//    rect(x, y, w, h);
 
+//    bangArray[id].setPosition(x, y);
+//    bangArray[id].setSize((int) w, (int) h);
+//    bangArray[id].setCaptionLabel(name);
+//    println("Adding a Bang: "+bangArray[id]+", "+Integer.toString(id)+", "+name);
+    //mainGUI.addBang(bangArray[id], Integer.toString(id), name);
+    
+    bangArray[id] = mainGUI.addBang(dataset.identifier+": "+name)
+                   .setPosition(x, y)
+                   .setSize((int) w, (int) h)
+                   .setId(id)
+                   .setCaptionLabel(name)
+                   .getCaptionLabel().align(ControlP5.CENTER, ControlP5.BOTTOM-50) 
+                   .setColorCaptionLabel(0xff000000)
+                   .toUpperCase(false) 
+                   ;
+                         
   }
   
   // setters
@@ -90,7 +108,23 @@ class DataDisplay {
   
   void setFeaturesValsMax(double[] featureValsMax_) {
     featureValsMax = featureValsMax_;
-
+  }
+  
+  void clearBangArray() {
+//    if (bangArray.length > 0) {
+//    for (int i = 0; i < bangArray.length; i++) {
+//      try {
+//      //mainGUI.remove(features.get(i));
+//      } catch (Exception e) {
+//      println("...couldn't remove Bang instances from DataDisplay.");
+//      }
+//    }
+//    //Arrays.fill(bangArray, null);
+//    }
+  }
+  
+  void setBangArray(Label[] bangArray_) {
+    bangArray = bangArray_;
   }
   
   // getters
@@ -117,6 +151,9 @@ void updateGraph() {
   int approvedFeaturesTotal = 0;
   int featureValuesTotal = 0;
   // Clear all instances of DataDisplay in displayGroups
+  for (DataDisplay displayGroup : displayGroups) {
+    displayGroup.clearBangArray();
+  }
   displayGroups.clear();
   // check if removeAll is needed (computationally more expensive)
   //println("...displaying datasets: "+selectedDatasets.size()+" datasets and "+selectedFeatures.size()+" features");
@@ -146,7 +183,7 @@ void updateGraph() {
           // Add this feature to the approved features list
           approvedFeatures.add(selectedDatasets.get(a).feature_names[i]);
           
-          // Max value
+          // Max value initialization (zero)
           approvedFeaturesValsMax.get(a).add((double) 0.0);
           
           // Add this features' values to the approved features' values list
@@ -224,11 +261,14 @@ void updateGraph() {
   // starting x position for the first bar group
   float totalXDistance = chartXPos;
   jMIR_graphics_run = false;
+  clearBarGraph();
   for(int i = 0; i < displayGroups.size(); i++) {
     displayGroups.get(i).setGroupPosition(totalXDistance,chartYPos);
     //displayGroup.get(i).setSpacing(spc);
     displayGroups.get(i).setBarWidth(barWidth_);
     displayGroups.get(i).setFeaturesValsMax(graphMax);
+    //displayGroups.get(i).clearBangArray();
+    displayGroups.get(i).setBangArray(new [selectedFeatures.size()]);
     displayGroups.get(i).update();
     totalXDistance += displayGroups.get(i).getApprovedFeatures().size()*(barWidth_)+spc;
   }
@@ -236,6 +276,14 @@ void updateGraph() {
   //println("displayGroups.size: "+displayGroups.size());
 }
 
+void clearBarGraph() {
+  for (DataSet dataset : selectedDatasets) {
+    for (String feature : selectedFeatures) {
+    mainGUI.remove(dataset.identifier+": "+feature);
+    }
+  }
+    
+}
 
 void printDatasets() {
   println("...printing datasets: "+selectedDatasets.size()+" datasets and "+selectedFeatures.size()+" features");
@@ -260,7 +308,7 @@ void printDatasets() {
 void jMIR_graphics_run() {
 if(jMIR_graphics_run) {
   for (DataDisplay displayGroup : displayGroups) {
-    displayGroup.update();
+    //displayGroup.update();
   }
 }
 }

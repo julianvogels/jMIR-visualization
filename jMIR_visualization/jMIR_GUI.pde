@@ -67,9 +67,6 @@ int fileBrowseGUIxOffset;
 ListBox lDatasets;
 ListBox lFeatures;
 
-// GUI Groups
-//Group g1;
-
 // Other GUI elements
 PImage fileGUIbg;
 
@@ -85,7 +82,8 @@ boolean moveFileGUIFlag = false;
 // Display background image?
 boolean renderBGImage = true;
 
-
+// Font
+ControlFont font;
 
 
 void jMIR_GUI() {
@@ -96,8 +94,9 @@ void jMIR_GUI() {
   //frame.setLocation(displayHeight/2-round(frameHeight/2), displayWidth/2-round(frameWidth/2));
   
   // Font customizations
-  PFont  font = createFont("Helvetica", 20);
-  textFont(font);
+  PFont  pfont = createFont("Helvetica", 20, true);
+  font = new ControlFont(pfont,8);
+  textFont(pfont);
     
   // set system look and feel 
   try { 
@@ -138,7 +137,7 @@ void jMIR_GUI() {
                     .setText("jMIR visualization")
                     .setPosition(fileBrowseGUIxOffset-4,fileBrowseGUIyOffset)
                     .setColorValue(0x00000000)
-                    .setFont(font)
+                    .setFont(pfont)
                     .setId(51)
                     ;
                     
@@ -240,13 +239,6 @@ void jMIR_GUI() {
                    .setColorValue(0x00000000)
                    ;   
     
-     
-    // GROUPS
-    // TODO: use later
-//  g1 = fileCP5.addGroup("g1")
-//                .setPosition(20,80)
-//                .setWidth(300)
-//                ;   
      
   //===============================
   // ADDITIONAL GUI SETUP
@@ -505,7 +497,7 @@ void selectDataset(ListBoxItem lbi, int index, boolean selection) {
       println("User Action: Deselected Dataset \""+pPdatasets[index].identifier+"\"");
     }
     selectedDatasets.remove(pPdatasets[index]);
-    lbi.setColorBackground(0x00336600);
+    lbi.setColorBackground(0xFF003366);
   }
 }
 

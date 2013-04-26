@@ -484,7 +484,7 @@ void controlEvent(ControlEvent theEvent) {
       
     }
     //printDatasets();
-//    updateGraph();
+    updateGraph();
   }    
   
   }  

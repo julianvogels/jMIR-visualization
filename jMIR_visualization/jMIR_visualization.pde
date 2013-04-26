@@ -36,5 +36,6 @@ void setup() {
 
 void draw() {
   jMIR_GUI_run();
+  jMIR_graphics_run();
 }
 

@@ -24,7 +24,7 @@ void setup() {
   if (frame != null) {
     frame.setResizable(true);
   }
-   
+     
   // call the jMIR connection setup
   jMIR_connect();
   

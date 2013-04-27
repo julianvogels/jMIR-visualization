@@ -83,6 +83,7 @@ boolean moveFileGUIFlag = false;
 boolean renderBGImage = true;
 
 // Font
+PFont pfont;
 ControlFont font;
 
 
@@ -94,7 +95,7 @@ void jMIR_GUI() {
   //frame.setLocation(displayHeight/2-round(frameHeight/2), displayWidth/2-round(frameWidth/2));
   
   // Font customizations
-  PFont  pfont = createFont("Helvetica", 20, true);
+  pfont = createFont("SansSerif", 20, true);
   font = new ControlFont(pfont,8);
   textFont(pfont);
     

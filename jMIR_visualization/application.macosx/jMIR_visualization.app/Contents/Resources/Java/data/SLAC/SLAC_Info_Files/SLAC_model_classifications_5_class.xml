@@ -1,0 +1,1771 @@
+<?xml version="1.0"?>
+<!DOCTYPE classifications_file [
+   <!ELEMENT classifications_file (comments, data_set+)>
+   <!ELEMENT comments (#PCDATA)>
+   <!ELEMENT data_set (data_set_id, misc_info*, role?, classification)>
+   <!ELEMENT data_set_id (#PCDATA)>
+   <!ELEMENT misc_info (#PCDATA)>
+   <!ATTLIST misc_info info_type CDATA "">
+   <!ELEMENT role (#PCDATA)>
+   <!ELEMENT classification (section*, class*)>
+   <!ELEMENT section (start, stop, class+)>
+   <!ELEMENT class (#PCDATA)>
+   <!ELEMENT start (#PCDATA)>
+   <!ELEMENT stop (#PCDATA)>
+]>
+
+<classifications_file>
+
+   <comments></comments>
+
+   <data_set>
+      <data_set_id>Albert_King___Born_Under_A_Bad_Sign</data_set_id>
+      <classification>
+         <class>Blues</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>B_B__King___How_Blue_Can_You_Get</data_set_id>
+      <classification>
+         <class>Blues</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>B_B__King___Rock_Me_Baby</data_set_id>
+      <classification>
+         <class>Blues</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>B_B__King___The_Thrill_Is_Gone</data_set_id>
+      <classification>
+         <class>Blues</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Buddy_Guy___Don_t_Answer_the_Door</data_set_id>
+      <classification>
+         <class>Blues</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Cream___Crossroads</data_set_id>
+      <classification>
+         <class>Blues</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Derek_and_the_Dominoes___Key_to_the_Highway</data_set_id>
+      <classification>
+         <class>Blues</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Derek_and_the_Dominoes___Nobody_Knows_You_When_You_re_Down_and_Out</data_set_id>
+      <classification>
+         <class>Blues</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Gary_Moore___Still_Got_The_Blues</data_set_id>
+      <classification>
+         <class>Blues</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>James_Cotton___Sweet_Sixteen</data_set_id>
+      <classification>
+         <class>Blues</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Johnny_Winter___Good_Morning_Little_Schoolgirl</data_set_id>
+      <classification>
+         <class>Blues</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Johnny_Winter___Unseen_Eye</data_set_id>
+      <classification>
+         <class>Blues</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Koko_Taylor___Let_the_Good_Times_Roll</data_set_id>
+      <classification>
+         <class>Blues</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Led_Zeppelin___I_Can_t_Quit_You_Baby</data_set_id>
+      <classification>
+         <class>Blues</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Led_Zeppelin___Since_I_ve_Been_Loving_You</data_set_id>
+      <classification>
+         <class>Blues</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Stevie_Ray_Vaughan___Cold_Shot</data_set_id>
+      <classification>
+         <class>Blues</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Stevie_Ray_Vaughan___Honey_Bee</data_set_id>
+      <classification>
+         <class>Blues</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Stevie_Ray_Vaughan___Pride_And_Joy</data_set_id>
+      <classification>
+         <class>Blues</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Stevie_Ray_Vaughan___Texas_Flood</data_set_id>
+      <classification>
+         <class>Blues</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Ten_Years_After___Help_Me</data_set_id>
+      <classification>
+         <class>Blues</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>The_Allman_Brothers_Band___It_s_Not_My_Cross_To_Bear</data_set_id>
+      <classification>
+         <class>Blues</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>The_Allman_Brothers_Band___One_Way_Out</data_set_id>
+      <classification>
+         <class>Blues</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>The_Allman_Brothers_Band___Statesboro_Blues</data_set_id>
+      <classification>
+         <class>Blues</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>The_Allman_Brothers_Band___Stormy_Monday</data_set_id>
+      <classification>
+         <class>Blues</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>The_Doors___Roadhouse_Blues</data_set_id>
+      <classification>
+         <class>Blues</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Blind_Lemon_Jefferson___Matchbox_Blues</data_set_id>
+      <classification>
+         <class>Blues</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Brownie_McGhee___Ain_t_No_Tellin_</data_set_id>
+      <classification>
+         <class>Blues</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Brownie_McGhee___Keys_to_the_Highway</data_set_id>
+      <classification>
+         <class>Blues</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Buddy_Guy___Rollin__and_Tumblin_</data_set_id>
+      <classification>
+         <class>Blues</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Charlie_Patton___Screamin__And_Hollerin__The_Blues</data_set_id>
+      <classification>
+         <class>Blues</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Chris_Thomas_King___Hard_Time_Killing_Floor_Blues</data_set_id>
+      <classification>
+         <class>Blues</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Doc_Watson___Blues_Stay_Away_From_Me</data_set_id>
+      <classification>
+         <class>Blues</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Eric_Clapton___Before_You_Accuse_Me</data_set_id>
+      <classification>
+         <class>Blues</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Howlin__Wolf___The_Red_Rooster</data_set_id>
+      <classification>
+         <class>Blues</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>James_Cotton___Don_t_Start_Me_Talkin_</data_set_id>
+      <classification>
+         <class>Blues</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>James_Cotton___Juke</data_set_id>
+      <classification>
+         <class>Blues</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Johnny_Winter___Dallas</data_set_id>
+      <classification>
+         <class>Blues</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Lightnin__Hopkins___In_The_Evening_The_Sun_Is_Going_Down_Time</data_set_id>
+      <classification>
+         <class>Blues</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Lightnin__Hopkins___Trouble_In_Mind_Time</data_set_id>
+      <classification>
+         <class>Blues</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Mama_Yancey___How_Long_Blues</data_set_id>
+      <classification>
+         <class>Blues</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Mississippi_Fred_McDowell___My_Babe</data_set_id>
+      <classification>
+         <class>Blues</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Muddy_Waters___Good_Morning_Little_School_Girl</data_set_id>
+      <classification>
+         <class>Blues</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Muddy_Waters___I_m_Your_Hoochie_Coochie_Man</data_set_id>
+      <classification>
+         <class>Blues</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Muddy_Waters___Kansas_City</data_set_id>
+      <classification>
+         <class>Blues</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Robert_Johnson___Cross_Road_Blues</data_set_id>
+      <classification>
+         <class>Blues</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Robert_Johnson___I_Believe_I_ll_Dust_My_Broom</data_set_id>
+      <classification>
+         <class>Blues</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Robert_Johnson___Sweet_Home_Chicago</data_set_id>
+      <classification>
+         <class>Blues</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Robert_Johnson___Terraplane_Blues</data_set_id>
+      <classification>
+         <class>Blues</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Robert_Johnson___Walking_Blues</data_set_id>
+      <classification>
+         <class>Blues</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Skip_James___Special_Rider_Blues</data_set_id>
+      <classification>
+         <class>Blues</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Johann_Sebastian_Bach___The_Art_of_Fugue___Fuga_3</data_set_id>
+      <classification>
+         <class>Classical</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Johann_Sebastian_Bach___Cello_Suite_No__1__Prelude</data_set_id>
+      <classification>
+         <class>Classical</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Johann_Sebastian_Bach___Preludeand_Fugue__BWV_545__C_Major__1__Prelude</data_set_id>
+      <classification>
+         <class>Classical</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Johann_Sebastian_Bach___St__Matthew_Passion___Kommt__ihr_Tochter__helft_mir_klagen_</data_set_id>
+      <classification>
+         <class>Classical</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Johann_Sebastian_Bach___Was_bist_du_doch__o_Seele__so_betrubet</data_set_id>
+      <classification>
+         <class>Classical</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Dietrich_Buxtehude___Fuga_C_dur</data_set_id>
+      <classification>
+         <class>Classical</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Dietrich_Buxtehude___Herr_Jesu_Christ__ich_weiss_gar_wohl</data_set_id>
+      <classification>
+         <class>Classical</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Dietrich_Buxtehude___Praeludium_In_E_Major__BuxWV_141___1</data_set_id>
+      <classification>
+         <class>Classical</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Arcangelo_Corelli___Op_6_Concerto_No__8__Christmas__I_Vivace___Grave</data_set_id>
+      <classification>
+         <class>Classical</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>George_Frideric_Handel___Solomon__The_Arrival_Of_The_Queen_Of_Sheba</data_set_id>
+      <classification>
+         <class>Classical</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>George_Frideric_Handel___Suite_For_Harpsichord_In_D_Minor__Sarabande</data_set_id>
+      <classification>
+         <class>Classical</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>George_Frideric_Handel___Water_Music__Suite_in_F_Major___Bourr_e</data_set_id>
+      <classification>
+         <class>Classical</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Marin_Marais___Sonnerie_de_Ste__Genevieve_du_Mont_de_Paris</data_set_id>
+      <classification>
+         <class>Classical</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Claudio_Monteverdi___Altri_Canti_d_Amor</data_set_id>
+      <classification>
+         <class>Classical</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Claudio_Monteverdi___Ecco_pur_ch_a_voi_ritorno</data_set_id>
+      <classification>
+         <class>Classical</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Claudio_Monteverdi___L_Orfeo__Tu_sei_morta</data_set_id>
+      <classification>
+         <class>Classical</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Johann_Pachelbel___Canon_In_D_Major</data_set_id>
+      <classification>
+         <class>Classical</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Henry_Purcell___Dido_and_Aeneas__Act_3_Thy_hand_Belinda___When_I_am_laid_in_earth</data_set_id>
+      <classification>
+         <class>Classical</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Domenico_Scarlatti___Keyboard_Sonata__K__1_In_D_Minor__Allegro</data_set_id>
+      <classification>
+         <class>Classical</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Domenico_Scarlatti___Sonata_in_A_major__K39</data_set_id>
+      <classification>
+         <class>Classical</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Domenico_Scarlatti___Sonata_In_D_Major__K__119___1</data_set_id>
+      <classification>
+         <class>Classical</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Antonio_Vivaldi___Concerto_for_2_Violins__Cello_and_Orchestra_in_D_Minor___L_estro_armonico___Op__3__No__11__RV_565__1711___2__Largo_e_spiccato</data_set_id>
+      <classification>
+         <class>Classical</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Antonio_Vivaldi____The_Four_Seasons___Spring___Concerto_in_E_major__Op__8_No__1___I__Allegro</data_set_id>
+      <classification>
+         <class>Classical</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Antonio_Vivaldi___Concerto_no__6_in_A_minor_RV_356__I__Allegro_</data_set_id>
+      <classification>
+         <class>Classical</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Antonio_Vivaldi___Concerto_no__3_in_G_major_RV_310__I__Allegro_</data_set_id>
+      <classification>
+         <class>Classical</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Ludwig_van_Beethoven___6_Bagatelles__Op__126</data_set_id>
+      <classification>
+         <class>Classical</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Ludwig_van_Beethoven___Symphony_No_3_in_E_flat_Major__Op__55__Eroica___I__Allegro_Con_Brio</data_set_id>
+      <classification>
+         <class>Classical</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Ludwig_van_Beethoven___Fur_Elise</data_set_id>
+      <classification>
+         <class>Classical</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Hector_Berlioz___Harold_en_Italie_Op__16___1__Harold_aux_montagnes</data_set_id>
+      <classification>
+         <class>Classical</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Hector_Berlioz___Symphony_Fantastique__Op__14___5__Songue_D_une_Nuit_Du_Sabbat</data_set_id>
+      <classification>
+         <class>Classical</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Johannes_Brahms___Symphony_No__2_in_D_Op__73__Allegro_Non_Troppo</data_set_id>
+      <classification>
+         <class>Classical</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Fryderyk_Chopin___Ballade_No__3_in_A_flat_major__Op__47</data_set_id>
+      <classification>
+         <class>Classical</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Fryderyk_Chopin___Nocturne_no_13_in_c__Op_48_no_1</data_set_id>
+      <classification>
+         <class>Classical</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Antonin_Dvorak___Symphonie_Nr__9___Adagio___Allegro_molto</data_set_id>
+      <classification>
+         <class>Classical</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Franz_Liszt___Piano_Concerto_No__1_in_E_flat_major</data_set_id>
+      <classification>
+         <class>Classical</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Franz_Liszt___Transcendental_Etudes__S_139___05__Feux_Follets</data_set_id>
+      <classification>
+         <class>Classical</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Felix_Mendelssohn___A_Midsummer_Night_s_Dream___I_Overture</data_set_id>
+      <classification>
+         <class>Classical</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Felix_Mendelssohn___Songs_Without_Words_Op_38_No_1</data_set_id>
+      <classification>
+         <class>Classical</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Felix_Mendelssohn___Violin_Concerto_in_E_Minor__Op__64___II__Andante</data_set_id>
+      <classification>
+         <class>Classical</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Niccolo_Paganini___Caprice__07_In_A_Minor</data_set_id>
+      <classification>
+         <class>Classical</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Giacomo_Puccini___O_mio_babbino_caro</data_set_id>
+      <classification>
+         <class>Classical</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Gioachino_Rossini___Una_voce_poco_fa</data_set_id>
+      <classification>
+         <class>Classical</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Franz_Schubert___Gretchen_am_Spinnrade__Gretchen_at_the_Spinning_Wheel_</data_set_id>
+      <classification>
+         <class>Classical</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Robert_Schumann___Piano_Trio_n__3_in_G__Op__110___1___Bewegt__Doch_Nicht_Zu_Rasch</data_set_id>
+      <classification>
+         <class>Classical</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Giuseppe_Verdi___Aida___Romanza____Se_quel_guerrier_io_fossi______Celeste_Aida_</data_set_id>
+      <classification>
+         <class>Classical</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Giuseppe_Verdi___Aida___Gran_finale_II___Gloria_all_Egitto__ad_Iside_</data_set_id>
+      <classification>
+         <class>Classical</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Giuseppe_Verdi___Requiem__Libera_me__Dies_irae</data_set_id>
+      <classification>
+         <class>Classical</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Richard_Wagner___Ride_of_the_Valkyries</data_set_id>
+      <classification>
+         <class>Classical</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Richard_Wagner___Siegfired___Idyll</data_set_id>
+      <classification>
+         <class>Classical</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Richard_Wagner___Tristan_und_Isolde__Prelude___1</data_set_id>
+      <classification>
+         <class>Classical</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Art_Blakey___Moanin_</data_set_id>
+      <classification>
+         <class>Jazz</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Bud_Powell___Ornithology</data_set_id>
+      <classification>
+         <class>Jazz</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Bud_Powell___Scrapple_From_the_Apple</data_set_id>
+      <classification>
+         <class>Jazz</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Charlie_Parker___Au_Privave</data_set_id>
+      <classification>
+         <class>Jazz</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Charlie_Parker___Donna_Lee</data_set_id>
+      <classification>
+         <class>Jazz</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Dizzy_Gillespie___52nd_Street_Theme</data_set_id>
+      <classification>
+         <class>Jazz</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Dizzy_Gillespie___Groovin__High</data_set_id>
+      <classification>
+         <class>Jazz</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Herbie_Hancock___Cantaloupe_Island</data_set_id>
+      <classification>
+         <class>Jazz</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Herbie_Hancock___Watermelon_Man</data_set_id>
+      <classification>
+         <class>Jazz</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Horace_Silver___Opus_De_Funk</data_set_id>
+      <classification>
+         <class>Jazz</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>J__J__Johnson___Softly__As_In_The_Morning_Sunrise</data_set_id>
+      <classification>
+         <class>Jazz</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Jimmy_Smith___Back_At_The_Chicken_Shack</data_set_id>
+      <classification>
+         <class>Jazz</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>John_Coltrane___Airegin</data_set_id>
+      <classification>
+         <class>Jazz</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>John_Coltrane___Lazy_Bird</data_set_id>
+      <classification>
+         <class>Jazz</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>John_Coltrane___Mr__P_C_</data_set_id>
+      <classification>
+         <class>Jazz</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Lee_Morgan___The_Sidewinder</data_set_id>
+      <classification>
+         <class>Jazz</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Max_Roach___Billie_s_Bounce</data_set_id>
+      <classification>
+         <class>Jazz</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Miles_Davis___Blue__n__Boogie</data_set_id>
+      <classification>
+         <class>Jazz</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Miles_Davis___Doxy</data_set_id>
+      <classification>
+         <class>Jazz</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Miles_Davis___Half_Nelson</data_set_id>
+      <classification>
+         <class>Jazz</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Miles_Davis___Well__You_Needn_t</data_set_id>
+      <classification>
+         <class>Jazz</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Thelonious_Monk___Evidence</data_set_id>
+      <classification>
+         <class>Jazz</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Thelonious_Monk___In_Walked_Bud</data_set_id>
+      <classification>
+         <class>Jazz</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Thelonious_Monk___Straight_No_Chaser</data_set_id>
+      <classification>
+         <class>Jazz</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Wes_Montgomery___Four_On_Six</data_set_id>
+      <classification>
+         <class>Jazz</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Art_Tatum___In_A_Sentimental_Mood</data_set_id>
+      <classification>
+         <class>Jazz</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Ben_Webster___Bye_Bye_Blackbird</data_set_id>
+      <classification>
+         <class>Jazz</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Benny_Goodman___Sing__Sing__Sing</data_set_id>
+      <classification>
+         <class>Jazz</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Billie_Holiday___Darn_That_Dream</data_set_id>
+      <classification>
+         <class>Jazz</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Billie_Holiday___Do_Nothing_til_You_Hear_From_Me</data_set_id>
+      <classification>
+         <class>Jazz</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Billie_Holiday___It_Had_To_Be_You</data_set_id>
+      <classification>
+         <class>Jazz</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Billie_Holiday___Prelude_To_A_Kiss</data_set_id>
+      <classification>
+         <class>Jazz</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Billie_Holiday___Sophisticated_Lady</data_set_id>
+      <classification>
+         <class>Jazz</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Chick_Webb___Don_t_Be_That_Way_</data_set_id>
+      <classification>
+         <class>Jazz</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Count_Basie___April_In_Paris</data_set_id>
+      <classification>
+         <class>Jazz</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Count_Basie___Autumn_Leaves</data_set_id>
+      <classification>
+         <class>Jazz</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Count_Basie___Corner_Pocket</data_set_id>
+      <classification>
+         <class>Jazz</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Count_Basie___Freckle_Face</data_set_id>
+      <classification>
+         <class>Jazz</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Duke_Ellington___Cottontail</data_set_id>
+      <classification>
+         <class>Jazz</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Duke_Ellington___Don_t_Get_Around_Much_Anymore</data_set_id>
+      <classification>
+         <class>Jazz</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Duke_Ellington___It_Don_t_Mean_A_Thing</data_set_id>
+      <classification>
+         <class>Jazz</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Duke_Ellington___Perdido</data_set_id>
+      <classification>
+         <class>Jazz</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Duke_Ellington___Stompin__at_the_Savoy</data_set_id>
+      <classification>
+         <class>Jazz</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Duke_Ellington___Take_The_A_Train</data_set_id>
+      <classification>
+         <class>Jazz</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Ella_Fitzgerald___A_Foggy_Day</data_set_id>
+      <classification>
+         <class>Jazz</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Ella_Fitzgerald___Don_t_Be_That_Way</data_set_id>
+      <classification>
+         <class>Jazz</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Ella_Fitzgerald___Satin_Doll</data_set_id>
+      <classification>
+         <class>Jazz</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Louis_Armstrong___I_ve_Got_The_World_On_A_String</data_set_id>
+      <classification>
+         <class>Jazz</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Sarah_Vaughan___If_I_Were_A_Bell</data_set_id>
+      <classification>
+         <class>Jazz</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>The_Dorsey_Brothers___St__Louis_Blues</data_set_id>
+      <classification>
+         <class>Jazz</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Bone_Thugs_N_Harmony___1st_of_tha_Month</data_set_id>
+      <classification>
+         <class>Rap</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Bone_Thugs_N_Harmony___Look_into_My_Eyes</data_set_id>
+      <classification>
+         <class>Rap</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Coolio___Gangsta_s_Paradise</data_set_id>
+      <classification>
+         <class>Rap</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>DMX___Party_Up</data_set_id>
+      <classification>
+         <class>Rap</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>DMX___Ruff_Ryders__Anthem</data_set_id>
+      <classification>
+         <class>Rap</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Dr__Dre___Forgot_about_Dre</data_set_id>
+      <classification>
+         <class>Rap</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Dr__Dre___Keep_Their_Heads_Ringing</data_set_id>
+      <classification>
+         <class>Rap</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Dr__Dre___Still_Dreaming</data_set_id>
+      <classification>
+         <class>Rap</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Eminem___Bad_Meets_Evil</data_set_id>
+      <classification>
+         <class>Rap</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Eminem___Guilty_Conscience</data_set_id>
+      <classification>
+         <class>Rap</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Eminem___The_Real_Slim_Shady</data_set_id>
+      <classification>
+         <class>Rap</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Freak_Nasty___Da_Dip</data_set_id>
+      <classification>
+         <class>Rap</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Ice_Cube___Ghetto_Vet</data_set_id>
+      <classification>
+         <class>Rap</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Ice_Cube___Record_Company_Pimpin_</data_set_id>
+      <classification>
+         <class>Rap</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Jay_Z___Big_Pimpin_</data_set_id>
+      <classification>
+         <class>Rap</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>The_Notorious_B_I_G____Notorious_Thugs</data_set_id>
+      <classification>
+         <class>Rap</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Snoop_Dogg___Ain_t_Nut_in_Personal</data_set_id>
+      <classification>
+         <class>Rap</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Snoop_Dogg___Gz_And_Hustlas</data_set_id>
+      <classification>
+         <class>Rap</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Snoop_Dogg___Murder_Was_The_Case</data_set_id>
+      <classification>
+         <class>Rap</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Snoop_Dogg___Still_A_G_Thang</data_set_id>
+      <classification>
+         <class>Rap</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Snoop_Dogg___Tha_Shiznit</data_set_id>
+      <classification>
+         <class>Rap</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>The_Luniz___I_Got_5_On_It</data_set_id>
+      <classification>
+         <class>Rap</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Tupac___2_Of_Americaz_Most_Wanted</data_set_id>
+      <classification>
+         <class>Rap</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Tupac___I_Ain_t_Mad_At_Cha</data_set_id>
+      <classification>
+         <class>Rap</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Westside_Connection___Bow_Down</data_set_id>
+      <classification>
+         <class>Rap</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Arrested_Development___People_Everyday</data_set_id>
+      <classification>
+         <class>Rap</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Coolio___C_U_When_U_Get_There</data_set_id>
+      <classification>
+         <class>Rap</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Coolio___Fantastic_Voyage</data_set_id>
+      <classification>
+         <class>Rap</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Eminem___Stan</data_set_id>
+      <classification>
+         <class>Rap</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Jay_Z___Hard_Knock_Life</data_set_id>
+      <classification>
+         <class>Rap</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Marky_Mark___Good_Vibrations</data_set_id>
+      <classification>
+         <class>Rap</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>MC_Hammer___Have_You_Seen_Her</data_set_id>
+      <classification>
+         <class>Rap</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>MC_Hammer___U_Can_t_Touch_This</data_set_id>
+      <classification>
+         <class>Rap</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Naughty_by_Nature___Jamboree</data_set_id>
+      <classification>
+         <class>Rap</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Nelly___Country_Grammar</data_set_id>
+      <classification>
+         <class>Rap</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Puff_Daddy___I_ll_Be_Missing_You</data_set_id>
+      <classification>
+         <class>Rap</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Run_D_M_C____Sucker_M_C__s</data_set_id>
+      <classification>
+         <class>Rap</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Skee_Lo___I_Wish</data_set_id>
+      <classification>
+         <class>Rap</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Snoop_Dogg___Been_Around_Tha_World</data_set_id>
+      <classification>
+         <class>Rap</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>The_Fugees___Ready_Or_Not</data_set_id>
+      <classification>
+         <class>Rap</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>The_Notorious_B_I_G____Big_Poppa</data_set_id>
+      <classification>
+         <class>Rap</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>The_Notorious_B_I_G____Mo_Money_Mo_Problems</data_set_id>
+      <classification>
+         <class>Rap</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>The_Notorious_B_I_G____One_More_Chance</data_set_id>
+      <classification>
+         <class>Rap</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Tupac___Changes</data_set_id>
+      <classification>
+         <class>Rap</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Usher___You_Make_Me_Wanna</data_set_id>
+      <classification>
+         <class>Rap</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Vanilla_Ice___Ice_Ice_Baby</data_set_id>
+      <classification>
+         <class>Rap</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Warren_G___Regulate</data_set_id>
+      <classification>
+         <class>Rap</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Will_Smith___Gettin_Jiggy_With_It</data_set_id>
+      <classification>
+         <class>Rap</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Will_Smith___Just_The_Two_Of_Us</data_set_id>
+      <classification>
+         <class>Rap</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Will_Smith___Men_in_Black</data_set_id>
+      <classification>
+         <class>Rap</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Alice_In_Chains___Heaven_Beside_You</data_set_id>
+      <classification>
+         <class>Rock</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Alice_In_Chains___Rooster</data_set_id>
+      <classification>
+         <class>Rock</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Alice_In_Chains___Would</data_set_id>
+      <classification>
+         <class>Rock</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Cake___The_Distance</data_set_id>
+      <classification>
+         <class>Rock</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Collective_Soul___December</data_set_id>
+      <classification>
+         <class>Rock</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Collective_Soul___Gel</data_set_id>
+      <classification>
+         <class>Rock</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Collective_Soul___Precious_Declaration</data_set_id>
+      <classification>
+         <class>Rock</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Collective_Soul___Where_The_River_Flows</data_set_id>
+      <classification>
+         <class>Rock</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Creed___Higher</data_set_id>
+      <classification>
+         <class>Rock</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>dc_Talk___Jesus_Freak</data_set_id>
+      <classification>
+         <class>Rock</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Everclear___Santa_monica</data_set_id>
+      <classification>
+         <class>Rock</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Harvey_Danger___Flagpole_Sitta</data_set_id>
+      <classification>
+         <class>Rock</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Hole___Asking_For_It</data_set_id>
+      <classification>
+         <class>Rock</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Local_H___Bound_For_The_Floor</data_set_id>
+      <classification>
+         <class>Rock</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Nirvana___Heart_Shaped_Box</data_set_id>
+      <classification>
+         <class>Rock</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Nirvana___Lithium</data_set_id>
+      <classification>
+         <class>Rock</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Nirvana___Smells_Like_Teen_Spirit</data_set_id>
+      <classification>
+         <class>Rock</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Orgy___Blue_Monday</data_set_id>
+      <classification>
+         <class>Rock</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Pearl_Jam___Alive</data_set_id>
+      <classification>
+         <class>Rock</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Soundgarden___Black_Hole_Sun</data_set_id>
+      <classification>
+         <class>Rock</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Soundgarden___My_Wave</data_set_id>
+      <classification>
+         <class>Rock</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>The_Cardigans___My_favourite_game</data_set_id>
+      <classification>
+         <class>Rock</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>The_Smashing_Pumpkins___Bullet_With_Butterfly_Wings</data_set_id>
+      <classification>
+         <class>Rock</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>The_Smashing_Pumpkins___Where_Boys_Fear_To_Tread</data_set_id>
+      <classification>
+         <class>Rock</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Tool___Aenema</data_set_id>
+      <classification>
+         <class>Rock</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>311___Down</data_set_id>
+      <classification>
+         <class>Rock</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>ACDC___Back_in_Black</data_set_id>
+      <classification>
+         <class>Rock</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Filter___Dose</data_set_id>
+      <classification>
+         <class>Rock</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Guns_n__Roses___Welcome_to_the_Jungle</data_set_id>
+      <classification>
+         <class>Rock</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Iron_Maiden___Aces_High</data_set_id>
+      <classification>
+         <class>Rock</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Iron_Maiden___Revelations</data_set_id>
+      <classification>
+         <class>Rock</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Limp_Bizkit___Break_Stuff</data_set_id>
+      <classification>
+         <class>Rock</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Marilyn_Manson___Irresponsible_Hate_Anthem</data_set_id>
+      <classification>
+         <class>Rock</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Marilyn_Manson___The_Reflecting_God</data_set_id>
+      <classification>
+         <class>Rock</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Megadeth___99_Ways_to_Die</data_set_id>
+      <classification>
+         <class>Rock</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Metallica___Hit_The_Lights</data_set_id>
+      <classification>
+         <class>Rock</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Metallica___Master_of_Puppets</data_set_id>
+      <classification>
+         <class>Rock</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Metallica___The_Four_Horsemen</data_set_id>
+      <classification>
+         <class>Rock</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Metallica___The_Shortest_Straw</data_set_id>
+      <classification>
+         <class>Rock</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Metallica___Through_the_Never</data_set_id>
+      <classification>
+         <class>Rock</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Ozzy_Osbourne___Crazy_Train</data_set_id>
+      <classification>
+         <class>Rock</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Pantera___Becoming</data_set_id>
+      <classification>
+         <class>Rock</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Pantera___Cowboys_from_Hell</data_set_id>
+      <classification>
+         <class>Rock</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Pantera___I_m_Broken</data_set_id>
+      <classification>
+         <class>Rock</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Pantera___Walk</data_set_id>
+      <classification>
+         <class>Rock</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Rage_Against_The_Machine___Bulls_On_Parade</data_set_id>
+      <classification>
+         <class>Rock</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Rage_Against_The_Machine___Guerilla_Radio</data_set_id>
+      <classification>
+         <class>Rock</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Rage_Against_The_Machine___Killing_In_The_Name</data_set_id>
+      <classification>
+         <class>Rock</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>Rage_Against_The_Machine___Know_Your_Enemy</data_set_id>
+      <classification>
+         <class>Rock</class>
+      </classification>
+   </data_set>
+
+   <data_set>
+      <data_set_id>White_Zombie___Black_Sunshine</data_set_id>
+      <classification>
+         <class>Rock</class>
+      </classification>
+   </data_set>
+
+</classifications_file>

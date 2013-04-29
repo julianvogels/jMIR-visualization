@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE feature_key_file [
+   <!ELEMENT feature_key_file (comments, feature+)>
+   <!ELEMENT comments (#PCDATA)>
+   <!ELEMENT feature (name, description?, is_sequential, parallel_dimensions)>
+   <!ELEMENT name (#PCDATA)>
+   <!ELEMENT description (#PCDATA)>
+   <!ELEMENT is_sequential (#PCDATA)>
+   <!ELEMENT parallel_dimensions (#PCDATA)>
+]>
+
+<feature_key_file>
+
+   <comments>This is an example of an XML file that stores data about features to be used by ACE software. The name element specifies the unique name of a feature. The optional description element describes the feature in basic terminology. The is_sequential element specifies whether a feature can be applied to sequential windows of a data set. A value of true means that it can, and a value of false means that only one feature value may be extracted per feature set. The parallel_dimensions indicates the number of values that exist for the feature for a given section of a data set. This value will be 1, except for multi-dimensional features.</comments>
+
+   <feature>
+      <name>Spectral Centroid</name>
+      <description>The spectral centre of mass of a signal window.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Duration</name>
+      <description>The duration in ms of a recording.</description>
+      <is_sequential>false</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+</feature_key_file>

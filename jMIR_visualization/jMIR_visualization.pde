@@ -17,10 +17,10 @@ int frameWidth = 960;
 
 
 boolean DEBUG = true;
-int DEBUG_SET_CHOICE = 1;
+int DEBUG_SET_CHOICE = 3;
 
 void setup() {
-  size(frameWidth, frameHeight, P2D); 
+  size(frameWidth, frameHeight); 
   if (frame != null) {
     frame.setResizable(true);
   }

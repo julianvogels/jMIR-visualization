@@ -35,10 +35,6 @@ import java.awt.BorderLayout;
 ControlP5 fileCP5;
 ControlP5 mainGUI;
 
-// Frame management
-ControlFrame cf;
-float fFrameHeight = (float) frameHeight;
-
 // GUI general
 Textlabel title;
 Textlabel description;
@@ -77,8 +73,7 @@ boolean errorFlag = false;
 // FileGUI fade
 boolean fadeGUIFlag = false;
 int fadeGUIVal = 0;
-// GUI move
-boolean moveFileGUIFlag = false;
+
 // Display background image?
 boolean renderBGImage = true;
 
@@ -272,6 +267,15 @@ void jMIR_GUI() {
     txt3.setValue("/Volumes/Data HD/Users/Julian/Documents/Processing/jMIR-visualization/jMIR_visualization/data/Taxonomy.xml");  
     Textfield txt4 = ((Textfield)fileCP5.getController("classification"));
     txt4.setValue("/Volumes/Data HD/Users/Julian/Documents/Processing/jMIR-visualization/jMIR_visualization/data/Classifications.xml");  
+    } else if(DEBUG_SET_CHOICE == 3) {
+    Textfield txt1 = ((Textfield)fileCP5.getController("feature vectors"));
+    txt1.setValue("/Volumes/Data HD/Users/Julian/Documents/Processing/jMIR-visualization/jMIR_visualization/data/SLAC/SLAC_Feature_Values/Lyrics/ashley_final_filtered_feature_values.xml");  
+    Textfield txt2 = ((Textfield)fileCP5.getController("feature key"));
+    txt2.setValue("/Volumes/Data HD/Users/Julian/Documents/Processing/jMIR-visualization/jMIR_visualization/data/SLAC/SLAC_Feature_Values/Lyrics/ashley_final_filtered_feature_descriptions.xml");  
+    Textfield txt3 = ((Textfield)fileCP5.getController("taxonomy"));
+    txt3.setValue("/Volumes/Data HD/Users/Julian/Documents/Processing/jMIR-visualization/jMIR_visualization/data/SLAC/SLAC_Info_Files/SLAC_taxonomy_10_class.xml");  
+    Textfield txt4 = ((Textfield)fileCP5.getController("classification"));
+    txt4.setValue("/Volumes/Data HD/Users/Julian/Documents/Processing/jMIR-visualization/jMIR_visualization/data//SLAC/SLAC_Info_Files/SLAC_model_classifications_10_class.xml");  
     }
     
   }
@@ -292,7 +296,6 @@ String fileChooser() {
   if (returnVal == JFileChooser.APPROVE_OPTION) {
       File file = fc.getSelectedFile();
       currentDirectory = file.getParentFile();
-      //println(currentDirectory);
       
     // see if it's an xml 
     if (file.getName().endsWith("xml")) { 
@@ -340,7 +343,9 @@ String[] filesChooser() {
       filePath[i] = files[i].getPath(); 
       } else {
         if(files[i].isDirectory()) {
-        println("chosen path is directory");
+        if (DEBUG) {
+          println("chosen path is directory");
+        }
         // TODO implement directory functionality
         } 
         else {
@@ -349,7 +354,9 @@ String[] filesChooser() {
       }
     }
   } else { 
-    println("Open command cancelled by user."); 
+    if (DEBUG) {
+      println("Open command cancelled by user."); 
+    }
     return null;
   }
   return filePath;
@@ -363,23 +370,25 @@ FileSet openFiles() {
   fileSet.featureKey = filesChooser();
   fileSet.featureVectors = filesChooser();
   fileSet.classification = filesChooser();
+  
   if(fileSet.taxonomy == null || fileSet.featureKey == null || fileSet.featureVectors == null || fileSet.classification == null) {
-  // TODO add error
-  println("big fat IO file error");
-  return null;
+    // TODO add error handling
+    println("... file IO error");
+    return null;
   } else {
   return fileSet;
   }
+  
 }
 
 
 void controlEvent(ControlEvent theEvent) {
   
   if(theEvent.isController()) { 
-    
-    print("control event from : "+theEvent.controller().name()+", ID: "+theEvent.controller().getId());
-    println(", value : "+theEvent.controller().value());
-    
+    if (DEBUG) {
+      print("control event from : "+theEvent.controller().name()+", ID: "+theEvent.controller().getId());
+      println(", value : "+theEvent.controller().value());
+    }
     // clicking on brwoseFileGUI1 browse button button: on success displays path in textField  VECTORS    
     if(theEvent.controller().getId()==11) {
     String[] browseFile1 = filesChooser();
@@ -390,13 +399,11 @@ void controlEvent(ControlEvent theEvent) {
         concatString = concatString.concat(",");
         }
       concatString = concatString.concat(browseFile1[i]);
-      //println("file: "+browseFile1[i]+", concatenated String "+concatString);
       }
     Textfield txt = ((Textfield)fileCP5.getController("feature vectors"));  
     txt.setValue(""+concatString);  
-    //println(concatString);
     }   
-    }
+    } else
         
     // clicking on brwoseFileGUI2 browse button button: on success displays path in textField  TAXONOMY     
     if(theEvent.controller().getId()==21) {
@@ -405,7 +412,7 @@ void controlEvent(ControlEvent theEvent) {
     Textfield txt = ((Textfield)fileCP5.getController("taxonomy"));
     txt.setValue(""+browseFile);  
         }
-    } 
+    } else
  
     // clicking on brwoseFileGUI3 browse button button: on success displays path in textField  KEY
     if(theEvent.controller().getId()==31) {
@@ -417,13 +424,11 @@ void controlEvent(ControlEvent theEvent) {
           concatString = concatString.concat(",");
           }
           concatString = concatString.concat(browseFile3[i]);
-          //println("file: "+browseFile1[i]+", concatenated String "+concatString);
         }
       Textfield txt = ((Textfield)fileCP5.getController("feature key"));
       txt.setValue(""+concatString);  
-      //println(concatString);
       } 
-    }
+    } else
     
     // Cicking on brwoseFileGUI4 browse button buttonon success displays path in textField  CLASSIFICATION   
     if(theEvent.controller().getId()==41) {
@@ -435,30 +440,49 @@ void controlEvent(ControlEvent theEvent) {
           concatString = concatString.concat(",");
           }
           concatString = concatString.concat(browseFile4[i]);
-          //println("file: "+browseFile1[i]+", concatenated String "+concatString);
         }
       Textfield txt = ((Textfield)fileCP5.getController("classification"));
       txt.setValue(""+concatString);  
-      //println(concatString);
       } 
-     } 
+     } else
+     
+     // Clicking the Normalize Bar Graph Toggle
+     if(theEvent.controller().getId()==78) {
+       if(theEvent.controller().value() == 1.0) {
+         normalizeGraph = false;
+         updateGraph();
+       } else {
+         normalizeGraph = true;
+         updateGraph();
+       }
+     } else if(theEvent.controller().getId()==79) {
+       if(theEvent.controller().value() == 1.0) {
+         showRelated = false;
+       } else {
+         showRelated = true;
+       }
+     } else {
+     // controller is not one of the above 
+     
+     }
+     
   }  
   
   // ListBoxItem is clicked
   if (theEvent.isGroup()) {
-    //println(theEvent.group().value()+" from "+theEvent.group());
+    if (DEBUG) {
+      println(theEvent.group().value()+" from "+theEvent.group());
+    }
     ListBox l = (ListBox) theEvent.group();
-    //println(l.getName());
-    //println(l.getId());
+
     int index = (int)theEvent.group().value();
     ListBoxItem lbi = l.getItem(index);
     CColor lbiColor = lbi.getColor();
-    //print(lbiColor.getBackground());
-    if(lbiColor.getBackground() == (-16777216)) {
+    if(lbiColor.getBackground() == (-16764058)) {
       // selected
       // Datasets
       if (l.getId() == 101) {
-       selectDataset(lbi, index, true);
+        selectDataset(lbi, index, true);
       } 
       // Features
       else if (l.getId() == 102) {
@@ -477,8 +501,22 @@ void controlEvent(ControlEvent theEvent) {
       
     }
     //printDatasets();
+    // calls the method for drawing the graph in jMIR_graphics
     updateGraph();
   }    
+  
+  if (theEvent.isTab()) {
+    if (DEBUG) {
+      println("got an event from tab : "+theEvent.getTab().getName()+" with id "+theEvent.getTab().getId());
+    }
+    switch (theEvent.getTab().getId()) {
+      case 1: jMIR_graphics_run = true;
+              break;
+      case 2: jMIR_graphics_run = false;
+              break;
+      default: break;
+    }
+  }
   
   }  
 
@@ -490,7 +528,7 @@ void selectDataset(ListBoxItem lbi, int index, boolean selection) {
       println("User Action: Selected Dataset \""+pPdatasets[index].identifier+"\"");
     }
     selectedDatasets.add(pPdatasets[index]);
-    lbi.setColorBackground(0xffff0000);
+    lbi.setColorBackground(0xfffe5656);
   } 
   // deselected
   else {
@@ -508,13 +546,13 @@ void selectFeature(ListBoxItem lbi, int index, boolean selection) {
       println("User Action: Selected Feature \""+featureNames[index]+"\"");
     }
     selectedFeatures.add(featureNames[index]);
-    lbi.setColorBackground(0xffff0000);
+    lbi.setColorBackground(0xfffe5656);
   } else {
    if (DEBUG) {
       println("User Action: Deselected Feature \""+featureNames[index]+"\"");
     }
     selectedFeatures.remove(featureNames[index]);
-    lbi.setColorBackground(0x00336600);
+    lbi.setColorBackground(0xFF003366);
   }
 }
 
@@ -637,7 +675,9 @@ public void Confirm(int theValue) {
     Taxonomy taxonomy = new Taxonomy();
     try {
     taxonomy = Taxonomy.parseTaxonomyFile(taxonomyXML);
-    println("Taxonomy tree: "+taxonomy.getFormattedTreeStructure());
+    if (DEBUG) {
+      println("Taxonomy tree from file: \n"+taxonomy.getFormattedTreeStructure());
+    }
     } catch (Exception e) {
     errorFlag = true;
     TFTaxonomy.setText("DATA INPUT ERROR!");
@@ -651,9 +691,6 @@ public void Confirm(int theValue) {
       // Instantiate DataBoard and get the error boolean
       boolean isDataBoardError = dataBoardInitWithObjects(null, mergedFeatureDefinition, parsedSets, mergedSegmentedClassification);
       
-      // Method parsing file paths (not allowing multiple classification or feature key files)
-      // boolean isDataBoardError = dataBoard(taxonomyXML, featureKeyXML, featureVectorsXML, classificationXML);
-
       // checks if DataBoard returned an error, evokes an error handling function or initializes the visualization accordingly
       if (isDataBoardError) {
         dataBoardError();
@@ -732,6 +769,7 @@ void initVisualization() {
 
 void setupMainGUI() {
   mainGUI = new ControlP5(this);
+  mainGUI.setAutoDraw(false);
   
   //===============================
   // GENERAL GUI ELEMENTS
@@ -749,6 +787,9 @@ void setupMainGUI() {
   // Listboxes
   //===============================
 
+  // Maximum displayed chars in the listitem, then the String gets truncated and "..." is displayed 
+  int maxChars = 42;
+
   lDatasets = mainGUI.addListBox("Datasets")
          .setPosition(10, 50)
          .setSize(240, 120)
@@ -763,9 +804,13 @@ void setupMainGUI() {
   lDatasets.valueLabel().style().marginTop = 3; 
 
     for (int i = 0; i < pPdatasets.length; i++) {
-    ListBoxItem lbiDatasets = lDatasets.addItem(pPdatasets[i].identifier, i);
+    String identifier = pPdatasets[i].identifier.substring(0, Math.min(pPdatasets[i].identifier.length(), maxChars));
+    if (identifier.length() != pPdatasets[i].identifier.length()) {
+      identifier = identifier+"...";
+    }
+    ListBoxItem lbiDatasets = lDatasets.addItem(identifier, i);
     lbiDatasets.toUpperCase(false);
-    lbiDatasets.setColorBackground(0x00336600);
+    lbiDatasets.setColorBackground(0xFF003366);
   }
   
   int lDatasetsItemHeight;
@@ -800,9 +845,13 @@ void setupMainGUI() {
 
 
     for (int i = 0; i < featureNames.length; i++) {
+      String identifier = featureNames[i].substring(0, Math.min(featureNames[i].length(), maxChars));
+    if (identifier.length() != featureNames[i].length()) {
+      identifier = identifier+"...";
+    }
     ListBoxItem lbiFeatures = lFeatures.addItem(featureNames[i], i);
     lbiFeatures.toUpperCase(false);
-    lbiFeatures.setColorBackground(0x00336600);
+    lbiFeatures.setColorBackground(0xff003366);
   }
   
   int lFeaturesItemHeight;
@@ -839,10 +888,11 @@ void setupMainGUI() {
      
    mainGUI.window().setPositionOfTabs(260, 33);
    
-    
-//    //mainGUI.getController("jMIR Visualization").moveTo("global");
 //    mainGUI.getController("Datasets").moveTo("global"); 
 //    mainGUI.getController("Features").moveTo("global");
+
+  runGraphicsFlag = true;
+
   //===============================
   // Graph
   //===============================
@@ -861,7 +911,6 @@ void jMIR_GUI_run() {
   fill(255, fadeGUIVal*2.55);
   fadeGUI(fadeGUIFlag);
   rect(0,0,width,height);
-  //moveGUI(moveFileGUIFlag);
 }
 
 void fadeGUI(boolean fadeGUIFlag_) {
@@ -881,17 +930,4 @@ void fadeGUI(boolean fadeGUIFlag_) {
   }
 }
 
-void moveGUI(boolean moveFileGUIFlag_) {
-  if (moveFileGUIFlag_) {
-    
-    if (fileBrowseGUIxOffset >= (-300)) {
-      fileBrowseGUIxOffset = fileBrowseGUIxOffset-2; 
-//      PVector titlevec = title.getPosition();
-//      titlevec.x = titlevec.x-2; 
-//      title.setPosition(titlevec);
-      println(title.getAbsolutePosition());
-    } else {
-      moveFileGUIFlag = false;
-    }
-  }
-}
+

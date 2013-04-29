@@ -1,0 +1,156 @@
+<?xml version="1.0"?>
+<!DOCTYPE feature_key_file [
+   <!ELEMENT feature_key_file (comments, feature+)>
+   <!ELEMENT comments (#PCDATA)>
+   <!ELEMENT feature (name, description?, is_sequential, parallel_dimensions)>
+   <!ELEMENT name (#PCDATA)>
+   <!ELEMENT description (#PCDATA)>
+   <!ELEMENT is_sequential (#PCDATA)>
+   <!ELEMENT parallel_dimensions (#PCDATA)>
+]>
+
+<feature_key_file>
+
+   <comments>Feature definitions for the 10 class cultural feature extraction.</comments>
+
+   <feature>
+      <name>Country Blues_websearch</name>
+      <description>The secondary search string.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Modern Blues_websearch</name>
+      <description>The secondary search string.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Baroque Classical_websearch</name>
+      <description>The secondary search string.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Romantic Classical_websearch</name>
+      <description>The secondary search string.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Bebop Jazz_websearch</name>
+      <description>The secondary search string.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Swing Jazz_websearch</name>
+      <description>The secondary search string.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Hardcore Rap_websearch</name>
+      <description>The secondary search string.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Pop Rap_websearch</name>
+      <description>The secondary search string.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Alternative Rock_websearch</name>
+      <description>The secondary search string.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Metal_websearch</name>
+      <description>The secondary search string.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Country Blues_lastfm</name>
+      <description>The secondary search string.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Modern Blues_lastfm</name>
+      <description>The secondary search string.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Baroque Classical_lastfm</name>
+      <description>The secondary search string.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Romantic Classical</name>
+      <description>The secondary search string.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Bebop Jazz_lastfm</name>
+      <description>The secondary search string.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Swing Jazz_lastfm</name>
+      <description>The secondary search string.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Hardcore Rap_lastfm</name>
+      <description>The secondary search string.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Pop Rap_lastfm</name>
+      <description>The secondary search string.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Alternative Rock_lastfm</name>
+      <description>The secondary search string.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+   <feature>
+      <name>Metal_lastfm</name>
+      <description>The secondary search string.</description>
+      <is_sequential>true</is_sequential>
+      <parallel_dimensions>1</parallel_dimensions>
+   </feature>
+
+</feature_key_file>

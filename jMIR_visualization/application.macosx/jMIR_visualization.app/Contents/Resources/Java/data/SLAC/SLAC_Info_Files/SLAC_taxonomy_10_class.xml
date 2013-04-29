@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE taxonomy_file [
+   <!ELEMENT taxonomy_file (comments, parent_class+)>
+   <!ELEMENT comments (#PCDATA)>
+   <!ELEMENT parent_class (class_name, sub_class*)>
+   <!ELEMENT class_name (#PCDATA)>
+   <!ELEMENT sub_class (class_name, sub_class*)>
+]>
+
+<taxonomy_file>
+
+   <comments>5 class genre classification taxonomy.</comments>
+
+   <parent_class>
+ 		 <class_name>Blues - Modern</class_name>
+   </parent_class>
+
+   <parent_class>
+ 		 <class_name>Blues - Traditional</class_name>
+   </parent_class>
+
+   <parent_class>
+ 		 <class_name>Classical - Baroque</class_name>
+   </parent_class>
+
+   <parent_class>
+ 		 <class_name>Classical - Romantic</class_name>
+   </parent_class>
+
+   <parent_class>
+ 		 <class_name>Jazz - Bop</class_name>
+   </parent_class>
+
+   <parent_class>
+ 		 <class_name>Jazz - Swing</class_name>
+   </parent_class>
+
+   <parent_class>
+ 		 <class_name>Rap - Hardcore Rap</class_name>
+   </parent_class>
+
+   <parent_class>
+ 		 <class_name>Rap - Pop Rap</class_name>
+   </parent_class>
+
+   <parent_class>
+ 		 <class_name>Rock - Alternative</class_name>
+   </parent_class>
+
+   <parent_class>
+ 		 <class_name>Rock - Metal</class_name>
+   </parent_class>
+
+</taxonomy_file>

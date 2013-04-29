@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE taxonomy_file [
+   <!ELEMENT taxonomy_file (comments, parent_class+)>
+   <!ELEMENT comments (#PCDATA)>
+   <!ELEMENT parent_class (class_name, sub_class*)>
+   <!ELEMENT class_name (#PCDATA)>
+   <!ELEMENT sub_class (class_name, sub_class*)>
+]>
+
+<taxonomy_file>
+
+   <comments>5 class genre classification taxonomy.</comments>
+
+   <parent_class>
+ 		 <class_name>Blues</class_name>
+   </parent_class>
+
+   <parent_class>
+ 		 <class_name>Classical</class_name>
+   </parent_class>
+
+   <parent_class>
+ 		 <class_name>Jazz</class_name>
+   </parent_class>
+
+   <parent_class>
+ 		 <class_name>Rap</class_name>
+   </parent_class>
+
+   <parent_class>
+ 		 <class_name>Rock</class_name>
+   </parent_class>
+
+</taxonomy_file>

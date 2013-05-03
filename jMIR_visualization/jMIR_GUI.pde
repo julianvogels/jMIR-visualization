@@ -362,25 +362,6 @@ String[] filesChooser() {
   return filePath;
 }
 
-// DEPRECATED
-FileSet openFiles() {
-  //Create a FileSet, containing the file paths to the XML documents
-  FileSet fileSet = new FileSet();
-  fileSet.taxonomy = fileChooser();
-  fileSet.featureKey = filesChooser();
-  fileSet.featureVectors = filesChooser();
-  fileSet.classification = filesChooser();
-  
-  if(fileSet.taxonomy == null || fileSet.featureKey == null || fileSet.featureVectors == null || fileSet.classification == null) {
-    // TODO add error handling
-    println("... file IO error");
-    return null;
-  } else {
-  return fileSet;
-  }
-  
-}
-
 
 void controlEvent(ControlEvent theEvent) {
   

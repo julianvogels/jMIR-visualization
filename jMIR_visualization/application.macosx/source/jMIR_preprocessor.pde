@@ -18,6 +18,7 @@ String[][][][] featureValuesSubLevels;
 
 void jMIR_preprocessor() {
 
+  if (DEBUG) {
   // Prints the Feature Names
   featureNames = dataBoard.get(0).getFeatureNames();
   //println("Feature Names: ");
@@ -45,12 +46,12 @@ void jMIR_preprocessor() {
   float maxTopLevelFeatureValue = 0;
   //ArrayList<float> featureValuesTopLevelToFloat = new ArrayList<float>;
   for (int j = 0; j < featureValuesTopLevel.length; j++) {
-    //println("\nDataset Top Level Feature Values ["+j+"]: "+pPdatasets[j].identifier);
+    println("\nDataset Top Level Feature Values ["+j+"]: "+pPdatasets[j].identifier);
     if (featureValuesTopLevel[j] != null) {
     for (int k = 0; k < featureValuesTopLevel[j].length; k++) {
-      //println("["+j+"]["+k+"]: "+pPdatasets[j].feature_names[k]);
+      println("["+j+"]["+k+"]: "+pPdatasets[j].feature_names[k]);
       for (int l = 0; l < featureValuesTopLevel[j][k].length; l++) {
-        //println("["+j+"]["+k+"]["+l+"]: "+featureValuesTopLevel[j][k][l]);
+        println("["+j+"]["+k+"]["+l+"]: "+featureValuesTopLevel[j][k][l]);
         //featureValuesTopLevelToFloat.add(valueOf(featureValuesTopLevel[j][k][l]));
         try {
         if (float(featureValuesTopLevel[j][k][l]) > maxTopLevelFeatureValue) {
@@ -87,5 +88,6 @@ void jMIR_preprocessor() {
 
   pPtaxonomy = dataBoard.get(0).getTaxonomy();
   //println("Taxonomy Structure: \n\n"+pPtaxonomy.getFormattedTreeStructure());
+  }
 }
 

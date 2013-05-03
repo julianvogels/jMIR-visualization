@@ -15,24 +15,35 @@
 int frameHeight = 640;
 int frameWidth = 960;
 
+boolean FULLSCREEN = true;
 
 boolean DEBUG = true;
-int DEBUG_SET_CHOICE = 3;
+// choose the set of file paths that are loaded on startup (1, 2, or 3)
+int DEBUG_SET_CHOICE = 1;
 
 void setup() {
+  if (!FULLSCREEN) {
   size(frameWidth, frameHeight); 
+  } else {
+  size(displayWidth, displayHeight);
+  }
+  
   if (frame != null) {
     frame.setResizable(true);
   }
-     
-  // call the jMIR connection setup
-  jMIR_connect();
   
   // call the graphical user interface setup
   jMIR_GUI();
 
 }
 
+boolean sketchFullScreen() {
+  if (FULLSCREEN) {
+  return true;
+  } else {
+  return false;
+  }
+}
 
 void draw() {
   jMIR_GUI_run();

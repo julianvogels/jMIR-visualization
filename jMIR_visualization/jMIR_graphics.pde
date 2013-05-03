@@ -46,14 +46,15 @@ void jMIR_graphics() {
  }
  );
  
- addToggleButton("Normalize Bar Graph", chartXPos, 620, 78);
- addToggleButton("Display Related Values on Hover", chartXPos+150, 620, 79);
+ addToggleButton("Normalize Bar Graph", chartXPos, height-35, 78);
+ addToggleButton("Display Related Values on Hover", chartXPos+150, height-35, 79);
 }
 
 // method updateGraph draws the graph
 void updateGraph() {
   
   chartWidth = width-270;
+  chartHeight = height*0.4;
   
   int approvedFeaturesTotal = 0;
   int featureValuesTotal = 0;

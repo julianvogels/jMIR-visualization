@@ -43,24 +43,35 @@ public class jMIR_visualization extends PApplet {
 int frameHeight = 640;
 int frameWidth = 960;
 
+boolean FULLSCREEN = true;
 
 boolean DEBUG = true;
+// choose the set of file paths that are loaded on startup (1, 2, or 3)
 int DEBUG_SET_CHOICE = 3;
 
 public void setup() {
+  if (!FULLSCREEN) {
   size(frameWidth, frameHeight); 
+  } else {
+  size(displayWidth, displayHeight);
+  }
+  
   if (frame != null) {
     frame.setResizable(true);
   }
-     
-  // call the jMIR connection setup
-  jMIR_connect();
   
   // call the graphical user interface setup
   jMIR_GUI();
 
 }
 
+public boolean sketchFullScreen() {
+  if (FULLSCREEN) {
+  return true;
+  } else {
+  return false;
+  }
+}
 
 public void draw() {
   jMIR_GUI_run();
@@ -101,6 +112,7 @@ class DataDisplay {
         // set the upper bound of the graph to the maximum value of the feature across the datasets
         maxFeatureVal = (float) featureValsMax[feature];
         minFeatureVal = (float) featureValsMin[feature];
+        println("Min: " + minFeatureVal);
         
         // basic drawing variables
         float x = groupPosX+feature*(barWidth+BAR_SPACING);
@@ -286,12 +298,6 @@ if (bangArray.size() > 0) {
   }
   
 } // END DataDisplay
-public class FileSet {
-  public String taxonomy;
-  public String[] featureKey;
-  public String[] featureVectors;
-  public String[] classification;
-}
 /*
 *  jMIR-visualization application
 *  Graphical User Interface
@@ -654,25 +660,6 @@ public String[] filesChooser() {
     return null;
   }
   return filePath;
-}
-
-// DEPRECATED
-public FileSet openFiles() {
-  //Create a FileSet, containing the file paths to the XML documents
-  FileSet fileSet = new FileSet();
-  fileSet.taxonomy = fileChooser();
-  fileSet.featureKey = filesChooser();
-  fileSet.featureVectors = filesChooser();
-  fileSet.classification = filesChooser();
-  
-  if(fileSet.taxonomy == null || fileSet.featureKey == null || fileSet.featureVectors == null || fileSet.classification == null) {
-    // TODO add error handling
-    println("... file IO error");
-    return null;
-  } else {
-  return fileSet;
-  }
-  
 }
 
 
@@ -1243,48 +1230,6 @@ public void fadeGUI(boolean fadeGUIFlag_) {
 // Declaration of the DataBoard class (jMIR library)
 ArrayList<DataBoard> dataBoard = new ArrayList<DataBoard>();
 
-// pretty mutch DEPRECATED | TODO either delete or update
-public void jMIR_connect() {
-  // get the FeatureVectors folder path
-  java.io.File folder = new java.io.File(dataPath("")+"/FeatureVectors/");
-
-  // list the files in the FeatureVectors folder
-  String[] filenames = folder.list();
-
-  // get the number of feature vectors
-  //println(filenames.length + " files in specified directory");
-  
-  // count valid XML files in folder
-  int XMLcount = 0;
-  for (int i = 0; i < filenames.length; i++) {
-  if(filenames[i].endsWith(".xml")){ 
-  XMLcount++;
-  }
-  }
-  // Create an Array for the feature vectors. There can be multiple feature vector files
-  ArrayList<String> featureVectorsAL = new ArrayList<String>();
-  
-  // get file names and write into array
-  for (int i = 0; i < filenames.length; i++) {
-  //println("File name: "+filenames[i]+", valid File: "+filenames[i].endsWith(".xml"));
-  if(filenames[i].endsWith(".xml")){
-  featureVectorsAL.add(folder+"/"+filenames[i]);
-  //println(featureVectorsXML[i]);
-      } else {
-  // do nothing    
-      }
-  }
-  // Load the XML documents
-  String taxonomyXML = dataPath("")+"/Taxonomy.xml";
-  String featureKeyXML = dataPath("")+"/FeatureKey.xml";
-  String classificationXML = dataPath("")+"/Classifications.xml";
-  String[] featureVectorsXML =  new String[featureVectorsAL.size()];
-  featureVectorsXML = featureVectorsAL.toArray(featureVectorsXML);
-  //boolean isError = dataBoard(taxonomyXML, featureKeyXML, featureVectorsXML, classificationXML);
-   
-}
-
-
 public boolean dataBoard(String taxonomyXML, String featureKeyXML, String[] featureVectorsXML, String classificationXML) {
 // Instantiate DataBoard
   try {
@@ -1363,14 +1308,15 @@ public void jMIR_graphics() {
  }
  );
  
- addToggleButton("Normalize Bar Graph", chartXPos, 620, 78);
- addToggleButton("Display Related Values on Hover", chartXPos+150, 620, 79);
+ addToggleButton("Normalize Bar Graph", chartXPos, height-35, 78);
+ addToggleButton("Display Related Values on Hover", chartXPos+150, height-35, 79);
 }
 
 // method updateGraph draws the graph
 public void updateGraph() {
   
   chartWidth = width-270;
+  chartHeight = height*0.4f;
   
   int approvedFeaturesTotal = 0;
   int featureValuesTotal = 0;
@@ -1630,6 +1576,7 @@ String[][][][] featureValuesSubLevels;
 
 public void jMIR_preprocessor() {
 
+  if (DEBUG) {
   // Prints the Feature Names
   featureNames = dataBoard.get(0).getFeatureNames();
   //println("Feature Names: ");
@@ -1657,12 +1604,12 @@ public void jMIR_preprocessor() {
   float maxTopLevelFeatureValue = 0;
   //ArrayList<float> featureValuesTopLevelToFloat = new ArrayList<float>;
   for (int j = 0; j < featureValuesTopLevel.length; j++) {
-    //println("\nDataset Top Level Feature Values ["+j+"]: "+pPdatasets[j].identifier);
+    println("\nDataset Top Level Feature Values ["+j+"]: "+pPdatasets[j].identifier);
     if (featureValuesTopLevel[j] != null) {
     for (int k = 0; k < featureValuesTopLevel[j].length; k++) {
-      //println("["+j+"]["+k+"]: "+pPdatasets[j].feature_names[k]);
+      println("["+j+"]["+k+"]: "+pPdatasets[j].feature_names[k]);
       for (int l = 0; l < featureValuesTopLevel[j][k].length; l++) {
-        //println("["+j+"]["+k+"]["+l+"]: "+featureValuesTopLevel[j][k][l]);
+        println("["+j+"]["+k+"]["+l+"]: "+featureValuesTopLevel[j][k][l]);
         //featureValuesTopLevelToFloat.add(valueOf(featureValuesTopLevel[j][k][l]));
         try {
         if (PApplet.parseFloat(featureValuesTopLevel[j][k][l]) > maxTopLevelFeatureValue) {
@@ -1699,6 +1646,7 @@ public void jMIR_preprocessor() {
 
   pPtaxonomy = dataBoard.get(0).getTaxonomy();
   //println("Taxonomy Structure: \n\n"+pPtaxonomy.getFormattedTreeStructure());
+  }
 }
 
   static public void main(String[] passedArgs) {

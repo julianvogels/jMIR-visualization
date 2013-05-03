@@ -32,6 +32,7 @@ class DataDisplay {
         // set the upper bound of the graph to the maximum value of the feature across the datasets
         maxFeatureVal = (float) featureValsMax[feature];
         minFeatureVal = (float) featureValsMin[feature];
+        println("Min: " + minFeatureVal);
         
         // basic drawing variables
         float x = groupPosX+feature*(barWidth+BAR_SPACING);

@@ -19,7 +19,7 @@ boolean FULLSCREEN = true;
 
 boolean DEBUG = true;
 // choose the set of file paths that are loaded on startup (1, 2, or 3)
-int DEBUG_SET_CHOICE = 3;
+int DEBUG_SET_CHOICE = 1;
 
 void setup() {
   if (!FULLSCREEN) {

@@ -47,7 +47,7 @@ boolean FULLSCREEN = true;
 
 boolean DEBUG = true;
 // choose the set of file paths that are loaded on startup (1, 2, or 3)
-int DEBUG_SET_CHOICE = 3;
+int DEBUG_SET_CHOICE = 1;
 
 public void setup() {
   if (!FULLSCREEN) {
@@ -551,31 +551,31 @@ public void jMIR_GUI() {
   if (DEBUG) {
     if(DEBUG_SET_CHOICE == 1) {
     Textfield txt1 = ((Textfield)fileCP5.getController("feature vectors"));
-    txt1.setValue("/Volumes/Data HD/Users/Julian/Documents/Processing/jMIR-visualization/jMIR_visualization/data/SLAC/SLAC_Feature_Values/Combined/combined_cultural_artist_10_class_audio_feature_values.xml,/Volumes/Data HD/Users/Julian/Documents/Processing/jMIR-visualization/jMIR_visualization/data/SLAC/SLAC_Feature_Values/Combined/combined_cultural_artist_10_class_symbolic_feature_values.xml");  
+    txt1.setValue(dataPath("SLAC/SLAC_Feature_Values/Combined/combined_cultural_artist_10_class_audio_feature_values.xml")+","+dataPath("SLAC/SLAC_Feature_Values/Combined/combined_cultural_artist_10_class_symbolic_feature_values.xml"));  
     Textfield txt2 = ((Textfield)fileCP5.getController("feature key"));
-    txt2.setValue("/Volumes/Data HD/Users/Julian/Documents/Processing/jMIR-visualization/jMIR_visualization/data/SLAC/SLAC_Feature_Values/Combined/combined_cultural_artist_10_class_symbolic_audio_feature_defintions.xml");  
+    txt2.setValue(dataPath("SLAC/SLAC_Feature_Values/Combined/combined_cultural_artist_10_class_symbolic_audio_feature_defintions.xml"));  
     Textfield txt3 = ((Textfield)fileCP5.getController("taxonomy"));
-    txt3.setValue("/Volumes/Data HD/Users/Julian/Documents/Processing/jMIR-visualization/jMIR_visualization/data/SLAC/SLAC_Info_Files/SLAC_taxonomy_10_class.xml");  
+    txt3.setValue(dataPath("SLAC/SLAC_Info_Files/SLAC_taxonomy_10_class.xml"));  
     Textfield txt4 = ((Textfield)fileCP5.getController("classification"));
-    txt4.setValue("/Volumes/Data HD/Users/Julian/Documents/Processing/jMIR-visualization/jMIR_visualization/data//SLAC/SLAC_Info_Files/SLAC_model_classifications_10_class.xml");  
+    txt4.setValue(dataPath("SLAC/SLAC_Info_Files/SLAC_model_classifications_10_class.xml"));  
     } else if(DEBUG_SET_CHOICE == 2) {
     Textfield txt1 = ((Textfield)fileCP5.getController("feature vectors"));
-    txt1.setValue("/Volumes/Data HD/Users/Julian/Documents/Processing/jMIR-visualization/jMIR_visualization/data/FeatureVectors/FeatureVectors.xml");  
+    txt1.setValue(dataPath("FeatureVectors/FeatureVectors.xml"));  
     Textfield txt2 = ((Textfield)fileCP5.getController("feature key"));
-    txt2.setValue("/Volumes/Data HD/Users/Julian/Documents/Processing/jMIR-visualization/jMIR_visualization/data/FeatureKey.xml");  
+    txt2.setValue(dataPath("FeatureKey.xml"));  
     Textfield txt3 = ((Textfield)fileCP5.getController("taxonomy"));
-    txt3.setValue("/Volumes/Data HD/Users/Julian/Documents/Processing/jMIR-visualization/jMIR_visualization/data/Taxonomy.xml");  
+    txt3.setValue(dataPath("Taxonomy.xml"));  
     Textfield txt4 = ((Textfield)fileCP5.getController("classification"));
-    txt4.setValue("/Volumes/Data HD/Users/Julian/Documents/Processing/jMIR-visualization/jMIR_visualization/data/Classifications.xml");  
+    txt4.setValue(dataPath("Classifications.xml"));  
     } else if(DEBUG_SET_CHOICE == 3) {
     Textfield txt1 = ((Textfield)fileCP5.getController("feature vectors"));
-    txt1.setValue("/Volumes/Data HD/Users/Julian/Documents/Processing/jMIR-visualization/jMIR_visualization/data/SLAC/SLAC_Feature_Values/Lyrics/ashley_final_filtered_feature_values.xml");  
+    txt1.setValue(dataPath("SLAC/SLAC_Feature_Values/Lyrics/ashley_final_filtered_feature_values.xml"));  
     Textfield txt2 = ((Textfield)fileCP5.getController("feature key"));
-    txt2.setValue("/Volumes/Data HD/Users/Julian/Documents/Processing/jMIR-visualization/jMIR_visualization/data/SLAC/SLAC_Feature_Values/Lyrics/ashley_final_filtered_feature_descriptions.xml");  
+    txt2.setValue(dataPath("SLAC/SLAC_Feature_Values/Lyrics/ashley_final_filtered_feature_descriptions.xml"));  
     Textfield txt3 = ((Textfield)fileCP5.getController("taxonomy"));
-    txt3.setValue("/Volumes/Data HD/Users/Julian/Documents/Processing/jMIR-visualization/jMIR_visualization/data/SLAC/SLAC_Info_Files/SLAC_taxonomy_10_class.xml");  
+    txt3.setValue(dataPath("SLAC/SLAC_Info_Files/SLAC_taxonomy_10_class.xml"));  
     Textfield txt4 = ((Textfield)fileCP5.getController("classification"));
-    txt4.setValue("/Volumes/Data HD/Users/Julian/Documents/Processing/jMIR-visualization/jMIR_visualization/data//SLAC/SLAC_Info_Files/SLAC_model_classifications_10_class.xml");  
+    txt4.setValue(dataPath("SLAC/SLAC_Info_Files/SLAC_model_classifications_10_class.xml"));  
     }
     
   }
@@ -1650,7 +1650,7 @@ public void jMIR_preprocessor() {
 }
 
   static public void main(String[] passedArgs) {
-    String[] appletArgs = new String[] { "jMIR_visualization" };
+    String[] appletArgs = new String[] { "--full-screen", "--bgcolor=#666666", "--hide-stop", "jMIR_visualization" };
     if (passedArgs != null) {
       PApplet.main(concat(appletArgs, passedArgs));
     } else {
